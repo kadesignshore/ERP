@@ -1,0 +1,112 @@
+{% load static tailwind_tags %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TXP - CRM</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+  <style media="only screen">
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body class="h-svh">
+  <div class="flex flex-col h-full">
+    {% include 'header2.html' %}
+    <div
+      class="dark:bg-slate-800 grow relative mx-auto w-full lg:max-w-[93rem] flex flex-col lg:flex-row flex-grow-1 gap-0 lg:gap-4 py-0 lg:py-4 p-4">
+      <!-- ========== MAIN CONTENT ========== -->
+
+      <!-- Sidebar Toggle -->
+      {% include 'sidebar.html' with crm=crm %}
+      <!-- End Sidebar -->
+
+      <!-- Table Section -->
+      {% include 'table.html' with crm=crm %}
+      <!-- End Table Section -->
+
+    </div>
+    {% include 'footer.html' %}
+  </div>
+  <script src="{% static 'preline.js' %}"></script>
+</body>
+<script>
+  // Grid Options: Contains all of the grid configurations
+  const gridOptions = {
+    rowSelection: "multiple",
+    // Row Data: The data to be displayed.
+    rowData: [
+      { Id: "000032", Name: "David Adams", Address: "5 Admiral Road,  Swanbour  (Adelaide CBD) 5923 2377   0412145110   416.362-3604", "Email AC": "david@truexpro.com" },
+      { Id: "000103", Name: "Ahadieh Naser", Address: "230 Brown's Line,  Morley  (Bayswater) 416.253.9399 #5   416.253.9399   123 456", "Email AC": "ahadieh@truexpro.com" },
+      { Id: "000004", Name: "Jim Anastasiadis", Address: 29600, "Email AC": "Jim@truexpro.com" },
+      { Id: "000161", Name: "Heather Archer", Address: 64950, "Email AC": "Heather@truexpro.com" },
+      { Id: "000122", Name: "Neil Bascombe", Address: 33850, "Email AC": "Neil@truexpro.com" },
+      { Id: "000638", Name: "asdfdsf", Address: 29600, "Email AC": "" },
+      { Id: "000130", Name: "Daniela Beninato", Address: 64950, "Email AC": "daniela@gmail.com" },
+      { Id: "000027", Name: "Sari Bercovitch", Address: 33850, "Email AC": "sari@gmail.com" },
+      { Id: "000086", Name: "Andrew Bignell", Address: 29600, "Email AC": "andrew@gmail.com" },
+      { Id: "000576", Name: "Frank Bloggs", Address: 64950, "Email AC": "frank@gmail.com" },
+      { Id: "000575", Name: "Joe Bloggs", Address: 33850, "Email AC": "joe@gmail.com" },
+      { Id: "000583", Name: "Mary Bloggs", Address: 29600, "Email AC": "mary@gmail.com" },
+    ],
+    // Column Definitions: Defines the columns to be displayed.
+    columnDefs: [
+      {
+        field: "Id", filter: "true", minWidth: 180,
+        minWidth: 180,
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
+      },
+      { field: "Name" },
+      { field: "Address" },
+      { field: "Email AC", filter: "true" }
+    ],
+    defaultColDef: {
+      flex: 1,
+      minWidth: 100,
+    },
+    suppressRowClickSelection: true,
+    rowSelection: 'multiple',
+    pagination: true,
+    autoHeight: true, // Enable auto height for rows
+    wrapText: true,
+  };
+
+//   function onQuickFilterChanged() {
+//   gridApi.setGridOption(
+//     'quickFilterText',
+//     document.getElementById('quickFilter').value
+//   );
+// }
+
+  // Your Javascript code to create the grid
+  const myGridElement = document.querySelector('#myGrid');
+  agGrid.createGrid(myGridElement, gridOptions);
+  gridOptions.pagination = false;
+  var api = agGrid.GridApi.getGridApi(myGridElement);
+  api.refreshCells({ force: true });
+</script>
+<script type="module" src="./main.js"></script>
+
+</html>

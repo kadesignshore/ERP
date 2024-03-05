@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dropdown:hover #showMenu{
+    display: block;
+ }
+ 
+ .open.hs-overlay-open\:translate-x-0 {
+    --tw-translate-x: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+ }
+ 
+ .hs-dropdown.open > .hs-dropdown-open\:opacity-100 {
+    opacity: 1;
+  }
+
+  /* .custom-scroll{
+    @apply{
+        max-h-60 lg:max-h-96 overflow-x-scroll [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full[webkit-scrollbar-track]:bg-allports-400 [&::-webkit-scrollbar-thumb]:rounded-full
+                  [&::-webkit-scrollbar-thumb]:bg-gray-300 pe-1
+    }
+  } */
+
+  /* custom.css */
+    .custom-x-scroll {
+      @apply overflow-x-auto
+      [&::-webkit-scrollbar]:h-2
+      [&::-webkit-scrollbar-track]:rounded-full
+      [&::-webkit-scrollbar-track]:bg-gray-200
+      [&::-webkit-scrollbar-thumb]:rounded-full
+      [&::-webkit-scrollbar-thumb]:bg-gray-100
+      dark:[&::-webkit-scrollbar-track]:bg-slate-700
+      dark:[&::-webkit-scrollbar-thumb]:bg-slate-500;
+    }
+    .custom-y-scroll {
+      @apply overflow-y-auto
+      [&::-webkit-scrollbar]:w-2
+      [&::-webkit-scrollbar-track]:rounded-full
+      [&::-webkit-scrollbar-track]:bg-gray-200
+      [&::-webkit-scrollbar-thumb]:rounded-full
+      [&::-webkit-scrollbar-thumb]:bg-gray-100
+      dark:[&::-webkit-scrollbar-track]:bg-slate-700
+      dark:[&::-webkit-scrollbar-thumb]:bg-slate-500;
+    }
