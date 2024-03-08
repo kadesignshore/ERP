@@ -6,7 +6,7 @@
     class="relative max-w-[93rem] flex flex-wrap basis-full items-center w-full mx-auto px-0 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-0 lg:pl-6"
     aria-label="Global">
     <div class="flex items-center justify-between">
-      <a class="flex-none text-xl font-semibold dark:text-white" href="http://127.0.0.1:8000/" aria-label="Brand">
+      <a class="flex-none text-xl font-semibold dark:text-white" href="{% url 'contacts'%}" aria-label="Brand">
         <div class="flex flex-shrink-0 items-center">
           <img class="h-8 w-auto" src="{% static 'images/TXP_Blue_Tag_Login_2022.jpg' %}" alt="TXP Company">
         </div>
@@ -28,8 +28,9 @@
           </svg>
         </button>
       </div>
+      
       <div class="order-4 pl-4 relative">
-        <div class="ps-3 sm:ps-6 sm:ms-6 hs-dropdown relative inline-flex [--placement:bottom-right] sm:border-s sm:border-gray-300 dark:border-gray-700 order-3" data-hs-dropdown-placement="">
+        <div class="hs-dropdown relative inline-flex [--placement:bottom-right]" data-hs-dropdown-placement="">
           <button id="hs-dropdown-with-header" type="button"
             class="hs-dropdown-toggle w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
             <img class="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-gray-800"
@@ -49,6 +50,16 @@
               </div>
             </div>
             <div class="mt-2 py-2 first:pt-0 last:pb-0">
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                href="/adminSetup">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M19 4H5C3.89543 4 3 4.89543 3 6V14C3 15.1046 3.89543 16 5 16H19C20.1046 16 21 15.1046 21 14V6C21 4.89543 20.1046 4 19 4Z"
+                    stroke="#1F2937" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M2 20H22" stroke="#1F2937" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Admin Setup
+              </a>
               <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#">
                 <svg class="size-4" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -141,7 +152,7 @@
                 href="#">
                 Sales Campaigns
               </a>
-              <hr>
+              <hr class="border-gray-300">
               <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#">
                 SLM Choices List
@@ -170,7 +181,7 @@
                 href="#">
                 Choices Lists
               </a>
-              <hr>
+              <hr class="border-gray-300">
               <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#">
                 Activity Series Types
@@ -287,17 +298,17 @@
                 href="#">
                 Notice Board
               </a>
-              <hr>
+              <hr class="border-gray-300">
               <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#">
                 Payroll & Events Calendar Setup...
               </a>
-              <hr>
+              <hr class="border-gray-300">
               <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#">
                 Table Aliases
               </a>
-              <hr>
+              <hr class="border-gray-300">
               <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#">
                 User Translations
@@ -306,7 +317,7 @@
                 href="#">
                 Help Screens
               </a>
-              <hr>
+              <hr class="border-gray-300">
               <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#">
                 Quick Search Fields

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse
+from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from .forms import CustomerForm
 
@@ -22,6 +23,12 @@ def adminSetup(request):
 
 def crmClient(request):
     return render(request, "crm.html",{"crm":'Client'})
+
+def crmSalesLeadManagement(request):
+    return render(request, "crm.html",{"crm":'Sales Lead Management'})
+
+def crmSuppliers(request):
+    return render(request, "supplier.html",{"crm":'Suppliers'})
 
 def contactProfile(request):
     return render(request, "contactProfile.html",{"crm":'Client'})

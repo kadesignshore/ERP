@@ -4,7 +4,7 @@
  * If you need the full config, get it from here:
  * https://unpkg.com/browse/tailwindcss@latest/stubs/defaultConfig.stub.js
  */
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
     mode:'jit',
     content: [
@@ -12,6 +12,7 @@ module.exports = {
          * HTML. Paths to Django template files that will contain Tailwind CSS classes.
          */
         './node_modules/preline/dist/*.js',
+        './node_modules/preline/src/plugins/tabs/*.ts',
         '../../contacts/templates/*.{html,js}',
         '../../**/*.{html,js}',
         /*  Templates within theme app (<tailwind_app_name>/templates), e.g. base.html. */
@@ -82,6 +83,7 @@ module.exports = {
         // require('@tailwindcss/forms'),
         // require('@tailwindcss/typography'),
         // require('@tailwindcss/aspect-ratio'),
-        require('./'),
+        // require('/node_modules/preline/plugin'),
+        // require('./'),
     ],
 }

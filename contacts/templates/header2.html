@@ -6,7 +6,7 @@
     class="relative max-w-[93rem] flex flex-wrap basis-full items-center w-full mx-auto px-0 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-0 lg:pl-6"
     aria-label="Global">
     <div class="flex items-center justify-between">
-      <a class="flex-none text-xl font-semibold dark:text-white" href="http://127.0.0.1:8000/" aria-label="Brand">
+      <a class="flex-none text-xl font-semibold dark:text-white" href="{% url 'contacts'%}" aria-label="Brand">
         <div class="flex flex-shrink-0 items-center">
           <img class="h-8 w-auto" src="{% static 'images/TXP_Blue_Tag_Login_2022.jpg' %}" alt="TXP Company">
         </div>
@@ -28,7 +28,7 @@
           </svg>
         </button>
       </div>
-
+      
       <div class="ps-3 sm:ps-6 sm:ms-6 sm:border-s sm:border-gray-300 dark:border-gray-700 order-3">
         <button type="button"
           class="w-9 h-9 flex justify-center items-center text-sm font-semibold rounded-lg border border-gray-200 text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
@@ -193,14 +193,12 @@
               </svg>
             </button>
           </div>
-          <a class="font-medium text-blue-600 px-6 lg:py-4 lg:px-0 dark:text-blue-500 sm:border-b sm:py-2 lg:border-none"
-            href="#" aria-current="page">SIDEKICK</a>
-          <!-- <a class="font-medium text-gray-500 hover:text-gray-400 px-6 sm:py-6 sm:px-0 dark:text-gray-400 dark:hover:text-gray-500" href="#">WORKFLOW</a> -->
-
+          <a class="menu-item {% if '/sidekick/' in request.path %}active{% endif %}"
+            href="#">SIDEKICK</a>
           <div
             class="hs-dropdown [--strategy:static] lg:[--strategy:fixed] [--adaptive:none] lg:[--trigger:hover] sm:border-b sm:py-2 lg:border-none lg:py-4">
             <button type="button"
-              class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium px-6 lg:px-0 dark:text-gray-400 dark:hover:text-gray-500">
+              class="menu-item {% if '/crm/' in request.path %}active {% endif %}">
               CRM
               <svg class="flex-shrink-0 ms-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -211,25 +209,25 @@
 
             <div
               class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] lg:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 lg:w-48 hidden z-10 bg-white lg:shadow-md rounded-lg py-2 px-3 lg:px-2 dark:bg-gray-800 lg:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full lg:border before:-top-5 before:start-0 before:w-full before:h-5 ">
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="http://127.0.0.1:8000/crm/contacts">
+              <a class="drop-down-item-a {% if '/crm/contacts' in request.path %}border-blue-600 border-b text-blue-600{% else %}{% endif %}"
+                href="{% url 'contacts'%}">
                 Contacts
               </a>
 
 
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="http://127.0.0.1:8000/crm/clients">
+              <a class="drop-down-item-a {% if '/crm/clients' in request.path %}border-blue-600 border-b text-blue-600{% else %}{% endif %}"
+                href="{% url 'clients'%}">
                 Clients
               </a>
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="#">
+              <a class="drop-down-item-a {% if '/crm/salesLeadManagement' in request.path %}border-blue-600 border-b text-blue-600{% else %}{% endif %}"
+                href="{% url 'salesLeadManagement'%}">
                 Sales Lead Management
               </a>
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="#">
+              <a class="drop-down-item-a {% if '/crm/suppliers' in request.path %}border-blue-600 border-b text-blue-600{% else %}{% endif %}"
+                href="{% url 'suppliers'%}">
                 Suppliers
               </a>
-              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              <a class="drop-down-item-a {% if '/crm/forms' in request.path %}border-blue-600 border-b text-blue-600{% else %}{% endif %}"
                 href="#">
                 Forms
               </a>
@@ -238,7 +236,7 @@
           <div
             class="hs-dropdown [--strategy:static] lg:[--strategy:fixed] [--adaptive:none] lg:[--trigger:hover] sm:border-b sm:py-2 lg:border-none lg:py-4">
             <button type="button"
-              class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium px-6 lg:px-0 dark:text-gray-400 dark:hover:text-gray-500">
+              class="menu-item {% if '/workflow/' in request.path %}active{% endif %}">
               WORKFLOW
               <svg class="flex-shrink-0 ms-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -283,7 +281,7 @@
           <div
             class="hs-dropdown [--strategy:static] lg:[--strategy:fixed] [--adaptive:none] lg:[--trigger:hover] sm:border-b sm:py-2 lg:border-none lg:py-4">
             <button type="button"
-              class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium px-6 lg:px-0 dark:text-gray-400 dark:hover:text-gray-500">
+              class="menu-item {% if '/operations/' in request.path %}active{% endif %}">
               OPERATIONS
               <svg class="flex-shrink-0 ms-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -331,7 +329,7 @@
           <div
             class="hs-dropdown [--strategy:static] lg:[--strategy:fixed] [--adaptive:none] lg:[--trigger:hover] sm:border-b sm:py-2 lg:border-none lg:py-4">
             <button type="button"
-              class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium px-6 lg:px-0 dark:text-gray-400 dark:hover:text-gray-500">
+              class="menu-item {% if '/financial/' in request.path %}active{% endif %}">
               FINANCIAL
               <svg class="flex-shrink-0 ms-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -359,7 +357,7 @@
           <div
             class="hs-dropdown [--strategy:static] lg:[--strategy:fixed] [--adaptive:none] lg:[--trigger:hover] sm:border-b sm:py-2 lg:border-none lg:py-4">
             <button type="button"
-              class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium px-6 lg:px-0 dark:text-gray-400 dark:hover:text-gray-500">
+              class="menu-item {% if '/forms/' in request.path %}active{% endif %}">
               FORMS
               <svg class="flex-shrink-0 ms-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

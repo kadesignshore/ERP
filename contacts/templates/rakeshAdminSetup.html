@@ -1,21 +1,19 @@
-{% load static tailwind_tags %}
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    <link rel="stylesheet" href="{% static 'css/output.css' %}">
-  
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
 </head>
+
 <body class="h-svh">
-  <div class="flex flex-col h-screen">
-    {% include 'header2.html' with settings={false}%}
-    <div class="  w-[100%] md:w-[100%] xl:w-[60%] m-auto grow">
+  <div class="flex flex-col h-full">
+    {% include 'adminSetupHeader.html' %}
+   
+    <div class="  w-[100%] md:w-[100%] xl:w-[80%] m-auto grow">
       {% load static %}
       <div class="border-b border-gray-200 px-9 dark:border-gray-700 p-5">
         <nav class="hidden md:justify-center sm:flex flex-wrap justify-center gap-4 lg:gap-0" aria-label="Tabs"
@@ -1565,16 +1563,23 @@
                   file:bg-gray-50 file:border-0
                   file:me-4
                   file:py-2 file:px-4
-                  dark:file:bg-gray-700 dark:file:text-gray-400" ame=" contact-signature"
+                  dark:file:bg-gray-700 dark:file:text-gray-400 ame=" contact-signature"
                       onchange="document.getElementById('contact-signature').src = window.URL.createObjectURL(this.files[0])"">
               </form>
             </div>
           </div>
           </div>
-      </div>
-    </div>
+        </div>
+
     {% include 'footer.html' %}
+    </div>
   </div>
+  </div>
+  <script src=" {% static 'js/preline.js' %}"></script>
+  <script type="module" src="{% static 'js/main.js' %}"></script>
+  <script>var __basePath = './';</script>
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@31.1.1/dist/ag-grid-enterprise.min.js">
+  </script>
 </body>
-<script src="{% static 'preline.js' %}"></script>
+
 </html>
