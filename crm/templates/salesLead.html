@@ -1,0 +1,102 @@
+{% load static tailwind_tags %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TXP - CRM</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+  <style media="only screen">
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body class="h-svh">
+  <div class="flex flex-col h-full">
+    {% include 'header.html' %}
+    <div
+      class="dark:bg-slate-800 grow relative mx-auto w-full lg:max-w-[93rem] flex flex-col lg:flex-row flex-grow-1 gap-0 lg:gap-4 py-0 lg:py-4 p-4">
+      <!-- ========== MAIN CONTENT ========== -->
+
+      <!-- Sidebar Toggle -->
+      {% load static  %}
+        
+      {% include 'sidebar.html' %}
+
+      {% include 'table.html' %}
+
+    </div>
+    {% include 'footer.html' %}
+  </div>
+  <script src="{% static 'preline.js' %}"></script>
+</body>
+<script>
+  // Grid Options: Contains all of the grid configurations
+  const gridOptions = {
+    rowSelection: "multiple",
+    // Row Data: The data to be displayed.
+    rowData: [
+      { Id: "000032", open: "  26/11/2023 - 00/00/0000", owner: "Wesley Storms", client: "Morris White Pty Ltd, James Hamilton",campaign:"Annual Appeal \n 1. Semper Ubi Sub Ubi", rating:"Future Possibility  /  1 - 20%", source:"Employee Referral",expenses:"$0 $0"  },
+      { Id: "000032", open: "  26/11/2023 - 00/00/0000", owner: "Wesley Storms", client: "Morris White Pty Ltd, James Hamilton",campaign:"Annual Appeal \n 1. Semper Ubi Sub Ubi", rating:"Future Possibility  /  1 - 20%", source:"Employee Referral",expenses:"$0 $0"  },
+      { Id: "000032", open: "  26/11/2023 - 00/00/0000", owner: "Wesley Storms", client: "Morris White Pty Ltd, James Hamilton",campaign:"Annual Appeal \n 1. Semper Ubi Sub Ubi", rating:"Future Possibility  /  1 - 20%", source:"Employee Referral",expenses:"$0 $0"  },
+      { Id: "000032", open: "  26/11/2023 - 00/00/0000", owner: "Wesley Storms", client: "Morris White Pty Ltd, James Hamilton",campaign:"Annual Appeal \n 1. Semper Ubi Sub Ubi", rating:"Future Possibility  /  1 - 20%", source:"Employee Referral",expenses:"$0 $0"  },
+      { Id: "000032", open: "  26/11/2023 - 00/00/0000", owner: "Wesley Storms", client: "Morris White Pty Ltd, James Hamilton",campaign:"Annual Appeal \n 1. Semper Ubi Sub Ubi", rating:"Future Possibility  /  1 - 20%", source:"Employee Referral",expenses:"$0 $0"  },
+      
+    ],
+    // Column Definitions: Defines the columns to be displayed.
+    columnDefs: [
+      {
+        field: "Id", filter: "true", minWidth: 180,
+        maxWidth: 120,
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
+      },
+      { field: "open", headerName: 'Open / Close' },
+      { field: "owner", headerName:'Owner/Closed By' },
+      { field: "client",headerName:'Client / Contact', filter: "true", },
+      { field: "campaign",headerName:'Campaign / Opportunity', filter: "true", },
+      { field: "rating",headerName:'BANT Rating / Stage', filter: "true", },
+      { field: "source",headerName:'Sales Lead Source', filter: "true" },
+      { field: "expenses",headerName:'Exptd / Acti $', filter: "true", },
+    ],
+    defaultColDef: {
+      flex: 1,
+      minWidth: 100,
+      
+    },
+    suppressRowClickSelection: true,
+    rowSelection: 'multiple',
+    pagination: true,
+    autoHeight: true, // Enable auto height for rows
+    wrapText: true,
+  };
+
+  const myGridElement = document.querySelector('#myGrid');
+  agGrid.createGrid(myGridElement, gridOptions);
+  gridOptions.pagination = false;
+  var api = agGrid.GridApi.getGridApi(myGridElement);
+  api.refreshCells({ force: true });
+</script>
+<script type="module" src="./main.js"></script>
+
+</html>

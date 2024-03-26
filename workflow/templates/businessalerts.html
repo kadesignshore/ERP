@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TXP - CRM</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+  <style media="only screen">
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body class="h-svh">
+  <div class="flex flex-col h-full">
+    {% include 'header.html' %}
+    <div
+      class="dark:bg-slate-800 grow relative mx-auto w-full lg:max-w-[93rem] flex flex-col lg:flex-row flex-grow-1 gap-0 lg:gap-4 py-0 lg:py-4 p-4">
+      <!-- ========== MAIN CONTENT ========== -->
+
+      
+      <!-- Sidebar Toggle -->
+      {% include 'workflowSidebar.html' with workflow=workflow %}
+      <!-- End Sidebar -->
+
+      <!-- Table Section -->
+      {% include 'table.html' with crm="Business Alerts" %}
+      <!-- End Table Section -->
+
+    </div>
+    {% include 'footer.html' %}
+  </div>
+  <script src="{% static 'js/preline.js' %}"></script>
+</body>
+<script>
+  // Grid Options: Contains all of the grid configurations
+  const gridOptions = {
+    rowSelection: "multiple",
+    // Row Data: The data to be displayed.
+    rowData: [
+      {ID: "02209", Date: "21/5/24", Description: "Account On Hold","Assigned To":" Wesley Storms" ,"Linked To":" Supplier:  DataCraft","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02210",Date: "22/5/24", Description: "Account On Hold", "Assigned To":" Wesley Storms","Linked To":"Supplier:  Bunnings","Notes":""},
+      { ID: "02211",Date: "23/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02212",Date: "24/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"" },
+      { ID: "02213",Date: "25/5/24", Description: "mt Owed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      { ID: "02214",Date: "26/5/24", Description: "Committed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":"Supplier:  McGavin Pty Ltd","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      {ID: "02209", Date: "21/5/24", Description: "Account On Hold","Assigned To":" Wesley Storms" ,"Linked To":" Supplier:  DataCraft","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02210",Date: "22/5/24", Description: "Account On Hold", "Assigned To":" Wesley Storms","Linked To":"Supplier:  Bunnings","Notes":""},
+      { ID: "02211",Date: "23/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02212",Date: "24/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"" },
+      { ID: "02213",Date: "25/5/24", Description: "mt Owed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      { ID: "02214",Date: "26/5/24", Description: "Committed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":"Supplier:  McGavin Pty Ltd","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      {ID: "02209", Date: "21/5/24", Description: "Account On Hold","Assigned To":" Wesley Storms" ,"Linked To":" Supplier:  DataCraft","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02210",Date: "22/5/24", Description: "Account On Hold", "Assigned To":" Wesley Storms","Linked To":"Supplier:  Bunnings","Notes":""},
+      { ID: "02211",Date: "23/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02212",Date: "24/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"" },
+      { ID: "02213",Date: "25/5/24", Description: "mt Owed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      { ID: "02214",Date: "26/5/24", Description: "Committed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":"Supplier:  McGavin Pty Ltd","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      {ID: "02209", Date: "21/5/24", Description: "Account On Hold","Assigned To":" Wesley Storms" ,"Linked To":" Supplier:  DataCraft","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02210",Date: "22/5/24", Description: "Account On Hold", "Assigned To":" Wesley Storms","Linked To":"Supplier:  Bunnings","Notes":""},
+      { ID: "02211",Date: "23/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02212",Date: "24/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"" },
+      { ID: "02213",Date: "25/5/24", Description: "mt Owed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      { ID: "02214",Date: "26/5/24", Description: "Committed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":"Supplier:  McGavin Pty Ltd","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      {ID: "02209", Date: "21/5/24", Description: "Account On Hold","Assigned To":" Wesley Storms" ,"Linked To":" Supplier:  DataCraft","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02210",Date: "22/5/24", Description: "Account On Hold", "Assigned To":" Wesley Storms","Linked To":"Supplier:  Bunnings","Notes":""},
+      { ID: "02211",Date: "23/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02212",Date: "24/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"" },
+      { ID: "02213",Date: "25/5/24", Description: "mt Owed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      { ID: "02214",Date: "26/5/24", Description: "Committed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":"Supplier:  McGavin Pty Ltd","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      {ID: "02209", Date: "21/5/24", Description: "Account On Hold","Assigned To":" Wesley Storms" ,"Linked To":" Supplier:  DataCraft","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02210",Date: "22/5/24", Description: "Account On Hold", "Assigned To":" Wesley Storms","Linked To":"Supplier:  Bunnings","Notes":""},
+      { ID: "02211",Date: "23/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00" },
+      { ID: "02212",Date: "24/5/24", Description: "mt Owed > Credit Limit","Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"" },
+      { ID: "02213",Date: "25/5/24", Description: "mt Owed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":" Client:  Stanton Chase International","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+      { ID: "02214",Date: "26/5/24", Description: "Committed > Credit Limit", "Assigned To":" Wesley Storms","Linked To":"Supplier:  McGavin Pty Ltd","Notes":"Amount Owed: $2,623.80 Credit Limit: $2,500.00"},
+    ],
+    // Column Definitions: Defines the columns to be displayed.
+    columnDefs: [
+      {
+        field: "ID", filter: "true",
+        minWidth:100,
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
+      },
+      { field: "Date",minWidth:50},
+      { field: "Description",minWidth:200 },
+      { field: "Assigned To",minWidth:130, },
+      { field: "Linked To",minWidth:200 },
+      { field: "Notes",minWidth:300 },
+      
+    ],
+    defaultColDef: {
+      flex: 1,
+    },
+    suppressRowClickSelection: true,
+    rowSelection: 'multiple',
+    pagination: true,
+    autoHeight: true, // Enable auto height for rows
+    wrapText: true,
+  };
+
+//   function onQuickFilterChanged() {
+//   gridApi.setGridOption(
+//     'quickFilterText',
+//     document.getElementById('quickFilter').value
+//   );
+// }
+
+  // Your Javascript code to create the grid
+  const myGridElement = document.querySelector('#myGrid');
+  agGrid.createGrid(myGridElement, gridOptions);
+  gridOptions.pagination = false;
+  var api = agGrid.GridApi.getGridApi(myGridElement);
+  api.refreshCells({ force: true });
+</script>
+<script type="module" src="./main.js"></script>
+
+</html>

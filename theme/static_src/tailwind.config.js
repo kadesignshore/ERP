@@ -85,5 +85,6 @@ module.exports = {
         // require('@tailwindcss/aspect-ratio'),
         // require('/node_modules/preline/plugin'),
         // require('./'),
+        require('./node_modules/preline/plugin')
     ],
 }

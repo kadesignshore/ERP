@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TXP - CRM</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+  <style media="only screen">
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body class="h-svh">
+  <div class="flex flex-col h-full">
+    {% include 'header.html' %}
+    <div
+      class="dark:bg-slate-800 grow relative mx-auto w-full lg:max-w-[93rem] flex flex-col lg:flex-row flex-grow-1 gap-0 lg:gap-4 py-0 lg:py-4 p-4">
+      <!-- ========== MAIN CONTENT ========== -->
+
+      {% load static  %}
+      <!-- Sidebar Toggle -->
+      {% include 'workflowSidebar.html' with workflow=workflow %}
+      <!-- End Sidebar -->
+
+      <!-- Table Section -->
+      {% include 'table.html' with crm="Meetings" %}
+      <!-- End Table Section -->
+
+    </div>
+    {% include 'footer.html' %}
+  </div>
+  <script src="{% static 'js/preline.js' %}"></script>
+</body>
+<script>
+  // Grid Options: Contains all of the grid configurations
+  const gridOptions = {
+    rowSelection: "multiple",
+    // Row Data: The data to be displayed.
+    rowData: [
+      {ID: "00016", Date: "26/01/23","Time":"5:30 PM","Name":"Maecenas vitae","Type":"Board Meeting","Location":"Daystar","Room":"Garage" ,"WC NO":"00032","Print":"Agenda - Minutes"},
+      {ID: "00034", Date: "21/02/23","Time":"4:40 PM","Name":"Summer","Type":"Project Review","Location":"","Room":"" ,"WC NO":"00000","Print":"Agenda - Minutes"},
+      {ID: "00002", Date: "22/12/23","Time":"6:20 PM","Name":"Donec congue tempus ligula","Type":"Staff Meeting","Location":"Office","Room":"88" ,"WC NO":"00015","Print":"Agenda - Minutes"},
+      {ID: "00033", Date: "29/12/23","Time":"3:03 PM","Name":"nteger eget leo quis","Type":"Executive","Location":"Client","Room":"" ,"WC NO":"00020","Print":"Agenda - Minutes"},
+      {ID: "00028", Date: "02/10/23","Time":"1:03 PM","Name":"Aenean ullamcorper, tellus nec fermentum","Type":"Training","Location":"Meeting Room","Room":" Classroom A2" ,"WC NO":"00034","Print":"Agenda - Minutes"},
+      {ID: "00016", Date: "26/01/23","Time":"5:30 PM","Name":"Maecenas vitae","Type":"Board Meeting","Location":"Daystar","Room":"Garage" ,"WC NO":"00032","Print":"Agenda - Minutes"},
+      {ID: "00034", Date: "21/02/23","Time":"4:40 PM","Name":"Summer","Type":"Project Review","Location":"","Room":"" ,"WC NO":"00000","Print":"Agenda - Minutes"},
+      {ID: "00002", Date: "22/12/23","Time":"6:20 PM","Name":"Donec congue tempus ligula","Type":"Staff Meeting","Location":"Office","Room":"88" ,"WC NO":"00015","Print":"Agenda - Minutes"},
+      {ID: "00033", Date: "29/12/23","Time":"3:03 PM","Name":"nteger eget leo quis","Type":"Executive","Location":"Client","Room":"" ,"WC NO":"00020","Print":"Agenda - Minutes"},
+      {ID: "00028", Date: "02/10/23","Time":"1:03 PM","Name":"Aenean ullamcorper, tellus nec fermentum","Type":"Training","Location":"Meeting Room","Room":" Classroom A2" ,"WC NO":"00034","Print":"Agenda - Minutes"},
+      {ID: "00016", Date: "26/01/23","Time":"5:30 PM","Name":"Maecenas vitae","Type":"Board Meeting","Location":"Daystar","Room":"Garage" ,"WC NO":"00032","Print":"Agenda - Minutes"},
+      {ID: "00034", Date: "21/02/23","Time":"4:40 PM","Name":"Summer","Type":"Project Review","Location":"","Room":"" ,"WC NO":"00000","Print":"Agenda - Minutes"},
+      {ID: "00002", Date: "22/12/23","Time":"6:20 PM","Name":"Donec congue tempus ligula","Type":"Staff Meeting","Location":"Office","Room":"88" ,"WC NO":"00015","Print":"Agenda - Minutes"},
+      {ID: "00033", Date: "29/12/23","Time":"3:03 PM","Name":"nteger eget leo quis","Type":"Executive","Location":"Client","Room":"" ,"WC NO":"00020","Print":"Agenda - Minutes"},
+      {ID: "00028", Date: "02/10/23","Time":"1:03 PM","Name":"Aenean ullamcorper, tellus nec fermentum","Type":"Training","Location":"Meeting Room","Room":" Classroom A2" ,"WC NO":"00034","Print":"Agenda - Minutes"},
+      {ID: "00016", Date: "26/01/23","Time":"5:30 PM","Name":"Maecenas vitae","Type":"Board Meeting","Location":"Daystar","Room":"Garage" ,"WC NO":"00032","Print":"Agenda - Minutes"},
+      {ID: "00034", Date: "21/02/23","Time":"4:40 PM","Name":"Summer","Type":"Project Review","Location":"","Room":"" ,"WC NO":"00000","Print":"Agenda - Minutes"},
+      {ID: "00002", Date: "22/12/23","Time":"6:20 PM","Name":"Donec congue tempus ligula","Type":"Staff Meeting","Location":"Office","Room":"88" ,"WC NO":"00015","Print":"Agenda - Minutes"},
+      {ID: "00033", Date: "29/12/23","Time":"3:03 PM","Name":"nteger eget leo quis","Type":"Executive","Location":"Client","Room":"" ,"WC NO":"00020","Print":"Agenda - Minutes"},
+      {ID: "00028", Date: "02/10/23","Time":"1:03 PM","Name":"Aenean ullamcorper, tellus nec fermentum","Type":"Training","Location":"Meeting Room","Room":" Classroom A2" ,"WC NO":"00034","Print":"Agenda - Minutes"},
+      {ID: "00016", Date: "26/01/23","Time":"5:30 PM","Name":"Maecenas vitae","Type":"Board Meeting","Location":"Daystar","Room":"Garage" ,"WC NO":"00032","Print":"Agenda - Minutes"},
+      {ID: "00034", Date: "21/02/23","Time":"4:40 PM","Name":"Summer","Type":"Project Review","Location":"","Room":"" ,"WC NO":"00000","Print":"Agenda - Minutes"},
+      {ID: "00002", Date: "22/12/23","Time":"6:20 PM","Name":"Donec congue tempus ligula","Type":"Staff Meeting","Location":"Office","Room":"88" ,"WC NO":"00015","Print":"Agenda - Minutes"},
+      {ID: "00033", Date: "29/12/23","Time":"3:03 PM","Name":"nteger eget leo quis","Type":"Executive","Location":"Client","Room":"" ,"WC NO":"00020","Print":"Agenda - Minutes"},
+      {ID: "00028", Date: "02/10/23","Time":"1:03 PM","Name":"Aenean ullamcorper, tellus nec fermentum","Type":"Training","Location":"Meeting Room","Room":" Classroom A2" ,"WC NO":"00034","Print":"Agenda - Minutes"},
+      {ID: "00016", Date: "26/01/23","Time":"5:30 PM","Name":"Maecenas vitae","Type":"Board Meeting","Location":"Daystar","Room":"Garage" ,"WC NO":"00032","Print":"Agenda - Minutes"},
+      {ID: "00034", Date: "21/02/23","Time":"4:40 PM","Name":"Summer","Type":"Project Review","Location":"","Room":"" ,"WC NO":"00000","Print":"Agenda - Minutes"},
+      {ID: "00002", Date: "22/12/23","Time":"6:20 PM","Name":"Donec congue tempus ligula","Type":"Staff Meeting","Location":"Office","Room":"88" ,"WC NO":"00015","Print":"Agenda - Minutes"},
+      {ID: "00033", Date: "29/12/23","Time":"3:03 PM","Name":"nteger eget leo quis","Type":"Executive","Location":"Client","Room":"" ,"WC NO":"00020","Print":"Agenda - Minutes"},
+      {ID: "00028", Date: "02/10/23","Time":"1:03 PM","Name":"Aenean ullamcorper, tellus nec fermentum","Type":"Training","Location":"Meeting Room","Room":" Classroom A2" ,"WC NO":"00034","Print":"Agenda - Minutes"},
+      
+       
+      
+     
+    ],
+    // Column Definitions: Defines the columns to be displayed.
+    columnDefs: [
+      {
+        field: "ID", filter: "true",
+        minWidth:50,
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
+      },
+      { field: "Date",minWidth:80},
+      { field: "Time",minWidth:80 },
+      { field: "Name",minWidth:100, },
+      { field: "Type",minWidth:120 },
+      { field: "Location",minWidth:100 },
+      { field: "Room",minWidth:100 },
+      { field: "WC NO",minWidth:100 },
+      { field: "Print",minWidth:150 },
+      
+    ],
+    defaultColDef: {
+      flex: 1,
+    },
+    suppressRowClickSelection: true,
+    rowSelection: 'multiple',
+    pagination: true,
+    autoHeight: true, // Enable auto height for rows
+    wrapText: true,
+  };
+
+//   function onQuickFilterChanged() {
+//   gridApi.setGridOption(
+//     'quickFilterText',
+//     document.getElementById('quickFilter').value
+//   );
+// }
+
+  // Your Javascript code to create the grid
+  const myGridElement = document.querySelector('#myGrid');
+  agGrid.createGrid(myGridElement, gridOptions);
+  gridOptions.pagination = false;
+  var api = agGrid.GridApi.getGridApi(myGridElement);
+  api.refreshCells({ force: true });
+</script>
+<script type="module" src="./main.js"></script>
+
+</html>

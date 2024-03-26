@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TXP - CRM</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+  <style media="only screen">
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body class="h-svh">
+  <div class="flex flex-col h-full">
+    {% include 'header.html' %}
+    <div
+      class="dark:bg-slate-800 grow relative mx-auto w-full lg:max-w-[93rem] flex flex-col lg:flex-row flex-grow-1 gap-0 lg:gap-4 py-0 lg:py-4 p-4">
+      <!-- ========== MAIN CONTENT ========== -->
+      {% include 'workflowSidebar.html' with workflow=workflow %}
+      
+      <!-- Table Section -->
+      {% include 'table.html' with crm="Activites" %}
+      <!-- End Table Section -->
+
+    </div>
+    {% include 'footer.html' %}
+  </div>
+  <script src="{% static 'js/preline.js' %}"></script>
+</body>
+<script>
+  // Grid Options: Contains all of the grid configurations
+  const gridOptions = {
+    rowSelection: "multiple",
+    // Row Data: The data to be displayed.
+    rowData: [
+      {Date: "29/02/24", Time: "08.00", TYP: "Grp", "Acty ID": '1100',Name:'Phase Condimentum',"Pgm Id":' WC 00009',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (2 roles)   Not Picked – Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      { Date: "29/02/24",Time: "08.00", TYP: "Grp", "Acty ID": '1133',Name:'Phase Maecenas',"Pgm Id":' WC 00079',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   NSC – NSC","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1132',Name:'Aliquam vehicula',"Pgm Id":' WC 000095',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":"Education & Training Seminar","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(3 roles)   Not Picked – Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1131',Name:'Phase Curabitur',"Pgm Id":' WC 0000955' ,"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "27/02/24",Time: "10.00", TYP: "Grp", "Acty ID": '1130',Name:'Phase Quisque',"Pgm Id":' WC 005258',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (1 roles)   Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      {Date: "29/02/24", Time: "08.00", TYP: "Grp", "Acty ID": '1100',Name:'Phase Condimentum',"Pgm Id":' WC 00009',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (2 roles)   Not Picked – Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      { Date: "29/02/24",Time: "08.00", TYP: "Grp", "Acty ID": '1133',Name:'Phase Maecenas',"Pgm Id":' WC 00079',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   NSC – NSC","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1132',Name:'Aliquam vehicula',"Pgm Id":' WC 000095',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":"Education & Training Seminar","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(3 roles)   Not Picked – Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1131',Name:'Phase Curabitur',"Pgm Id":' WC 0000955' ,"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "27/02/24",Time: "10.00", TYP: "Grp", "Acty ID": '1130',Name:'Phase Quisque',"Pgm Id":' WC 005258',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (1 roles)   Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      {Date: "29/02/24", Time: "08.00", TYP: "Grp", "Acty ID": '1100',Name:'Phase Condimentum',"Pgm Id":' WC 00009',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (2 roles)   Not Picked – Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      { Date: "29/02/24",Time: "08.00", TYP: "Grp", "Acty ID": '1133',Name:'Phase Maecenas',"Pgm Id":' WC 00079',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   NSC – NSC","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1132',Name:'Aliquam vehicula',"Pgm Id":' WC 000095',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":"Education & Training Seminar","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(3 roles)   Not Picked – Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1131',Name:'Phase Curabitur',"Pgm Id":' WC 0000955' ,"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "27/02/24",Time: "10.00", TYP: "Grp", "Acty ID": '1130',Name:'Phase Quisque',"Pgm Id":' WC 005258',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (1 roles)   Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      {Date: "29/02/24", Time: "08.00", TYP: "Grp", "Acty ID": '1100',Name:'Phase Condimentum',"Pgm Id":' WC 00009',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (2 roles)   Not Picked – Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      { Date: "29/02/24",Time: "08.00", TYP: "Grp", "Acty ID": '1133',Name:'Phase Maecenas',"Pgm Id":' WC 00079',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   NSC – NSC","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1132',Name:'Aliquam vehicula',"Pgm Id":' WC 000095',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":"Education & Training Seminar","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(3 roles)   Not Picked – Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1131',Name:'Phase Curabitur',"Pgm Id":' WC 0000955' ,"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "27/02/24",Time: "10.00", TYP: "Grp", "Acty ID": '1130',Name:'Phase Quisque',"Pgm Id":' WC 005258',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (1 roles)   Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      {Date: "29/02/24", Time: "08.00", TYP: "Grp", "Acty ID": '1100',Name:'Phase Condimentum',"Pgm Id":' WC 00009',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (2 roles)   Not Picked – Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      { Date: "29/02/24",Time: "08.00", TYP: "Grp", "Acty ID": '1133',Name:'Phase Maecenas',"Pgm Id":' WC 00079',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   NSC – NSC","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1132',Name:'Aliquam vehicula',"Pgm Id":' WC 000095',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":"Education & Training Seminar","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(3 roles)   Not Picked – Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1131',Name:'Phase Curabitur',"Pgm Id":' WC 0000955' ,"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "27/02/24",Time: "10.00", TYP: "Grp", "Acty ID": '1130',Name:'Phase Quisque',"Pgm Id":' WC 005258',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (1 roles)   Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      {Date: "29/02/24", Time: "08.00", TYP: "Grp", "Acty ID": '1100',Name:'Phase Condimentum',"Pgm Id":' WC 00009',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (2 roles)   Not Picked – Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      { Date: "29/02/24",Time: "08.00", TYP: "Grp", "Acty ID": '1133',Name:'Phase Maecenas',"Pgm Id":' WC 00079',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   NSC – NSC","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1132',Name:'Aliquam vehicula',"Pgm Id":' WC 000095',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":"Education & Training Seminar","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(3 roles)   Not Picked – Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1131',Name:'Phase Curabitur',"Pgm Id":' WC 0000955' ,"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "27/02/24",Time: "10.00", TYP: "Grp", "Acty ID": '1130',Name:'Phase Quisque',"Pgm Id":' WC 005258',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (1 roles)   Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      {Date: "29/02/24", Time: "08.00", TYP: "Grp", "Acty ID": '1100',Name:'Phase Condimentum',"Pgm Id":' WC 00009',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (2 roles)   Not Picked – Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+      { Date: "29/02/24",Time: "08.00", TYP: "Grp", "Acty ID": '1133',Name:'Phase Maecenas',"Pgm Id":' WC 00079',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   NSC – NSC","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1132',Name:'Aliquam vehicula',"Pgm Id":' WC 000095',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":"Education & Training Seminar","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(3 roles)   Not Picked – Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "28/02/24",Time: "09.00", TYP: "Grp", "Acty ID": '1131',Name:'Phase Curabitur',"Pgm Id":' WC 0000955' ,"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":"(2 roles)   Not Picked – Not Picked","Attendees":"Enrol 0/ Attend 0","Posted":"✗"},
+      { Date: "27/02/24",Time: "10.00", TYP: "Grp", "Acty ID": '1130',Name:'Phase Quisque',"Pgm Id":' WC 005258',"Linked WC":'SC - Nulla sit amet nunc aug', "Group/Subgrp":" Professional Services Project Management","Series/Billing":"Prj: $0  TBB: $0","Leader(s)/carer":" (1 roles)   Not Picked","Attendees":"Enrol 1/ Attend 1","Posted":"✗"},
+    ],
+    // Column Definitions: Defines the columns to be displayed.
+    columnDefs: [
+      {
+        field: "Date", filter: "true",
+        minWidth:150,
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
+      },
+      { field: "Time" },
+      { field: "TYP" },
+      { field: "Acty ID"},
+      { field: "Name",cellClass: 'text-red-400',minWidth:170 },
+      { field: "Pgm Id",minWidth:120 },
+      { field: "Linked WC",minWidth:250 },
+      { field: "Group/Subgrp",minWidth:350 },
+      { field: "Series/Billing"  },
+      { field: "Leader(s)/carer",minWidth:250 , },
+      { field: "Attendees" ,minWidth:200 },
+      { field: "Posted",cellClass: 'text-red-400'  },
+    ],
+    defaultColDef: {
+      flex: 1,
+      minWidth:90,
+    },
+    suppressRowClickSelection: true,
+    rowSelection: 'multiple',
+    pagination: true,
+    autoHeight: true, // Enable auto height for rows
+    wrapText: true,
+  };
+
+//   function onQuickFilterChanged() {
+//   gridApi.setGridOption(
+//     'quickFilterText',
+//     document.getElementById('quickFilter').value
+//   );
+// }
+
+  // Your Javascript code to create the grid
+  const myGridElement = document.querySelector('#myGrid');
+  agGrid.createGrid(myGridElement, gridOptions);
+  gridOptions.pagination = false;
+  var api = agGrid.GridApi.getGridApi(myGridElement);
+  api.refreshCells({ force: true });
+</script>
+<script type="module" src="./main.js"></script>
+
+</html>

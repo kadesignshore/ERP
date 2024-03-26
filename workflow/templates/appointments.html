@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TXP - CRM</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+  <style media="only screen">
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body class="h-svh">
+  <div class="flex flex-col h-full">
+    {% include 'header.html' %}
+    <div
+      class="dark:bg-slate-800 grow relative mx-auto w-full lg:max-w-[93rem] flex flex-col lg:flex-row flex-grow-1 gap-0 lg:gap-4 py-0 lg:py-4 p-4">
+      <!-- ========== MAIN CONTENT ========== -->
+
+      {% include 'workflowSidebar.html' with workflow=workflow %}
+
+      <!-- Table Section -->
+      {% include 'table.html' with crm="Appointments" %}
+      <!-- End Table Section -->
+
+    </div>
+    {% include 'footer.html' %}
+  </div>
+  <script src="{% static 'js/preline.js' %}"></script>
+</body>
+<script>
+  // Grid Options: Contains all of the grid configurations
+  const gridOptions = {
+    rowSelection: "multiple",
+    // Row Data: The data to be displayed.
+    rowData: [
+      {ID: "03051", Date: "1/1/24", "Times":" 14:15" ," Appt With":"(David Lewis)","Creator / Type":"AKomminos","Project / Client":"00004  Consulting - Accounting","Summary/Notes":"TEst12345", },
+      { ID: "03050",Date: "3/2/24",  "Times":"16:59"," Appt With":"(Aaron Komminos)","Creator / Type":"wstorms Training","Project / Client":"439 Management Group - Abc","Summary/Notes":"Test kapil",},
+      { ID: "03049",Date: "4/3/24",  "Times":"18:05"," Appt With":"(Wesley Storms)","Creator / Type":"Same","Project / Client":"Hume C Morrison Pty Ltd","Summary/Notes":"ABC"},
+      { ID: "03048",Date: "6/1/24",  "Times":"20:59"," Appt With":"(Glen Abugov)","Creator / Type":"Same Misc","Project / Client":"00046  DBE Staff Work Shifts Daystar","Summary/Notes":"Summary 27 Sep",},
+      {ID: "03051", Date: "1/1/24", "Times":" 14:15" ," Appt With":"(David Lewis)","Creator / Type":"AKomminos","Project / Client":"00004  Consulting - Accounting","Summary/Notes":"TEst12345", },
+      { ID: "03050",Date: "3/2/24",  "Times":"16:59"," Appt With":"(Aaron Komminos)","Creator / Type":"wstorms Training","Project / Client":"439 Management Group - Abc","Summary/Notes":"Test kapil",},
+      { ID: "03049",Date: "4/3/24",  "Times":"18:05"," Appt With":"(Wesley Storms)","Creator / Type":"Same","Project / Client":"Hume C Morrison Pty Ltd","Summary/Notes":"ABC",},
+      { ID: "03048",Date: "30/1/24",  "Times":"20:59"," Appt With":"(Glen Abugov)","Creator / Type":"Same Misc","Project / Client":"00046  DBE Staff Work Shifts Daystar","Summary/Notes":"Summary 27 Sep",},
+      {ID: "03051", Date: "1/1/24", "Times":" 14:15" ," Appt With":"(David Lewis)","Creator / Type":"AKomminos","Project / Client":"00004  Consulting - Accounting","Summary/Notes":"TEst12345", },
+      { ID: "03050",Date: "3/2/24",  "Times":"16:59"," Appt With":"(Aaron Komminos)","Creator / Type":"wstorms Training","Project / Client":"439 Management Group - Abc","Summary/Notes":"Test kapil",},
+      { ID: "03049",Date: "4/3/24",  "Times":"18:05"," Appt With":"(Wesley Storms)","Creator / Type":"Same","Project / Client":"Hume C Morrison Pty Ltd","Summary/Notes":"ABC",},
+      { ID: "03048",Date: "6/1/24",  "Times":"20:59"," Appt With":"(Glen Abugov)","Creator / Type":"Same Misc","Project / Client":"00046  DBE Staff Work Shifts Daystar","Summary/Notes":"Summary 27 Sep",},
+      {ID: "03051", Date: "1/1/24", "Times":" 14:15" ," Appt With":"(David Lewis)","Creator / Type":"AKomminos","Project / Client":"00004  Consulting - Accounting","Summary/Notes":"TEst12345", },
+      { ID: "03050",Date: "3/2/24",  "Times":"16:59"," Appt With":"(Aaron Komminos)","Creator / Type":"wstorms Training","Project / Client":"439 Management Group - Abc","Summary/Notes":"Test kapil",},
+      { ID: "03049",Date: "4/3/24",  "Times":"18:05"," Appt With":"(Wesley Storms)","Creator / Type":"Same","Project / Client":"Hume C Morrison Pty Ltd","Summary/Notes":"ABC",},
+      { ID: "03048",Date: "6/1/24",  "Times":"20:59"," Appt With":"(Glen Abugov)","Creator / Type":"Same Misc","Project / Client":"00046  DBE Staff Work Shifts Daystar","Summary/Notes":"Summary 27 Sep",},
+      {ID: "03051", Date: "1/1/24", "Times":" 14:15" ," Appt With":"(David Lewis)","Creator / Type":"AKomminos","Project / Client":"00004  Consulting - Accounting","Summary/Notes":"TEst12345", },
+      { ID: "03050",Date: "3/2/24",  "Times":"16:59"," Appt With":"(Aaron Komminos)","Creator / Type":"wstorms Training","Project / Client":"439 Management Group - Abc","Summary/Notes":"Test kapil"},
+      { ID: "03049",Date: "4/3/24",  "Times":"18:05"," Appt With":"(Wesley Storms)","Creator / Type":"Same","Project / Client":"Hume C Morrison Pty Ltd","Summary/Notes":"ABC",},
+      { ID: "03048",Date: "25/1/24",  "Times":"20:59"," Appt With":"(Glen Abugov)","Creator / Type":"Same Misc","Project / Client":"00046  DBE Staff Work Shifts Daystar","Summary/Notes":"Summary 27 Sep",},
+      {ID: "03051", Date: "1/1/24", "Times":" 14:15" ," Appt With":"(David Lewis)","Creator / Type":"AKomminos","Project / Client":"00004  Consulting - Accounting","Summary/Notes":"TEst12345", },
+      { ID: "03050",Date: "3/2/24",  "Times":"16:59"," Appt With":"(Aaron Komminos)","Creator / Type":"wstorms Training","Project / Client":"439 Management Group - Abc","Summary/Notes":"Test kapil",},
+      { ID: "03049",Date: "4/3/24",  "Times":"18:05"," Appt With":"(Wesley Storms)","Creator / Type":"Same","Project / Client":"Hume C Morrison Pty Ltd","Summary/Notes":"ABC",},
+      { ID: "03048",Date: "16/1/24",  "Times":"20:59"," Appt With":"(Glen Abugov)","Creator / Type":"Same Misc","Project / Client":"00046  DBE Staff Work Shifts Daystar","Summary/Notes":"Summary 27 Sep",},
+    ],
+    // Column Definitions: Defines the columns to be displayed.
+    columnDefs: [
+      {
+        field: "ID", filter: "true",
+        minWidth:90,
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
+      },
+      { field: "Date",minWidth:80},
+      { field: "Times",minWidth:80, },
+      { field: " Appt With",minWidth:170 },
+      { field: "Creator / Type",minWidth:160 },
+      { field: "Project / Client",minWidth:260 },
+      { field: "Summary/Notes",minWidth:160 },
+      
+    ],
+    defaultColDef: {
+      flex: 1,
+    },
+    suppressRowClickSelection: true,
+    rowSelection: 'multiple',
+    pagination: true,
+    autoHeight: true, // Enable auto height for rows
+    wrapText: true,
+  };
+
+  const myGridElement = document.querySelector('#myGrid');
+  agGrid.createGrid(myGridElement, gridOptions);
+  gridOptions.pagination = false;
+  var api = agGrid.GridApi.getGridApi(myGridElement);
+  api.refreshCells({ force: true });
+</script>
+<script type="module" src="./main.js"></script>
+
+</html>

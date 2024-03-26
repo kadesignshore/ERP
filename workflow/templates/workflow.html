@@ -1,0 +1,28 @@
+<!-- {% load static tailwind_tags %} -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow</title>
+    
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    
+
+</head>
+<body class="h-svh">
+  <div class="flex flex-col h-screen">
+    {% include 'header.html' %}
+    
+    {% block workflowSidebar with workflow="activites" %}
+    
+    {% endblock %}
+    
+    {% include 'footer.html' %}
+  </div>
+</body>
+<script src="{% static 'preline.js' %}"></script>
+<script src="{% static 'main.js' %}"></script>
+</html>

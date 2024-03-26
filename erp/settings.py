@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "tailwind",
     "theme",
-    "contacts",
+    "crm",
+    "workflow",
     "django_browser_reload"
 ]
 

@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TXP - CRM</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+  <style media="only screen">
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body class="h-svh">
+  <div class="flex flex-col h-full">
+    {% include 'header.html' %}
+    <div
+      class="dark:bg-slate-800 grow relative mx-auto w-full lg:max-w-[93rem] flex flex-col lg:flex-row flex-grow-1 gap-0 lg:gap-4 py-0 lg:py-4 p-4">
+      <!-- ========== MAIN CONTENT ========== -->
+
+      {% load static  %}
+      <!-- Sidebar Toggle -->
+      {% include 'workflowSidebar.html' with workflow=workflow %}
+      <!-- End Sidebar -->
+
+      <!-- Table Section -->
+      {% include 'table.html' with crm="Interlinks" %}
+      <!-- End Table Section -->
+
+    </div>
+    {% include 'footer.html' %}
+  </div>
+  <script src="{% static 'js/preline.js' %}"></script>
+</body>
+<script>
+  // Grid Options: Contains all of the grid configurations
+  const gridOptions = {
+    rowSelection: "multiple",
+    // Row Data: The data to be displayed.
+    rowData: [
+      {ID: "0019751", Date: "24/12/23", From: "wes@db-engineers.com","To":"Aaron Zapantis <aaron@ici-construction.co" ,"Subject":" Re: Fwd: Change in True Account I was not aware that we had made any changes to web mail. I'll ask Matthew tomorrow. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 10:11:44 -0400 To: Wes Storms"},
+      {ID: "0019752", Date: "26/12/23", From: " caprd@cira.ca","To":"Awes@db-engineers.com" ,"Subject":" Re: 4d server cache size  Thanks for the quick response to session from last week. I have changed the master as requested. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 15:30:03 -0400 To:"},
+      {ID: "0023383", Date: "28/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Auto check me."},
+      {ID: "0023374", Date: "19/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Fwd: Outlook"},
+        {ID: "0019751", Date: "24/12/23", From: "wes@db-engineers.com","To":"Aaron Zapantis <aaron@ici-construction.co" ,"Subject":" Re: Fwd: Change in True Account I was not aware that we had made any changes to web mail. I'll ask Matthew tomorrow. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 10:11:44 -0400 To: Wes Storms"},
+      {ID: "0019752", Date: "26/12/23", From: " caprd@cira.ca","To":"Awes@db-engineers.com" ,"Subject":" Re: 4d server cache size  Thanks for the quick response to session from last week. I have changed the master as requested. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 15:30:03 -0400 To:"},
+      {ID: "0023383", Date: "28/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Auto check me."},
+      {ID: "0023374", Date: "19/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Fwd: Outlook"},
+        {ID: "0019751", Date: "24/12/23", From: "wes@db-engineers.com","To":"Aaron Zapantis <aaron@ici-construction.co" ,"Subject":" Re: Fwd: Change in True Account I was not aware that we had made any changes to web mail. I'll ask Matthew tomorrow. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 10:11:44 -0400 To: Wes Storms"},
+      {ID: "0019752", Date: "26/12/23", From: " caprd@cira.ca","To":"Awes@db-engineers.com" ,"Subject":" Re: 4d server cache size  Thanks for the quick response to session from last week. I have changed the master as requested. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 15:30:03 -0400 To:"},
+      {ID: "0023383", Date: "28/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Auto check me."},
+      {ID: "0023374", Date: "19/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Fwd: Outlook"},
+        {ID: "0019751", Date: "24/12/23", From: "wes@db-engineers.com","To":"Aaron Zapantis <aaron@ici-construction.co" ,"Subject":" Re: Fwd: Change in True Account I was not aware that we had made any changes to web mail. I'll ask Matthew tomorrow. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 10:11:44 -0400 To: Wes Storms"},
+      {ID: "0019752", Date: "26/12/23", From: " caprd@cira.ca","To":"Awes@db-engineers.com" ,"Subject":" Re: 4d server cache size  Thanks for the quick response to session from last week. I have changed the master as requested. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 15:30:03 -0400 To:"},
+      {ID: "0023383", Date: "28/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Auto check me."},
+      {ID: "0023374", Date: "19/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Fwd: Outlook"},
+        {ID: "0019751", Date: "24/12/23", From: "wes@db-engineers.com","To":"Aaron Zapantis <aaron@ici-construction.co" ,"Subject":" Re: Fwd: Change in True Account I was not aware that we had made any changes to web mail. I'll ask Matthew tomorrow. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 10:11:44 -0400 To: Wes Storms"},
+      {ID: "0019752", Date: "26/12/23", From: " caprd@cira.ca","To":"Awes@db-engineers.com" ,"Subject":" Re: 4d server cache size  Thanks for the quick response to session from last week. I have changed the master as requested. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 15:30:03 -0400 To:"},
+      {ID: "0023383", Date: "28/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Auto check me."},
+      {ID: "0023374", Date: "19/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Fwd: Outlook"},
+        {ID: "0019751", Date: "24/12/23", From: "wes@db-engineers.com","To":"Aaron Zapantis <aaron@ici-construction.co" ,"Subject":" Re: Fwd: Change in True Account I was not aware that we had made any changes to web mail. I'll ask Matthew tomorrow. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 10:11:44 -0400 To: Wes Storms"},
+      {ID: "0019752", Date: "26/12/23", From: " caprd@cira.ca","To":"Awes@db-engineers.com" ,"Subject":" Re: 4d server cache size  Thanks for the quick response to session from last week. I have changed the master as requested. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 15:30:03 -0400 To:"},
+      {ID: "0023383", Date: "28/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Auto check me."},
+      {ID: "0023374", Date: "19/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Fwd: Outlook"},
+        {ID: "0019751", Date: "24/12/23", From: "wes@db-engineers.com","To":"Aaron Zapantis <aaron@ici-construction.co" ,"Subject":" Re: Fwd: Change in True Account I was not aware that we had made any changes to web mail. I'll ask Matthew tomorrow. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 10:11:44 -0400 To: Wes Storms"},
+      {ID: "0019752", Date: "26/12/23", From: " caprd@cira.ca","To":"Awes@db-engineers.com" ,"Subject":" Re: 4d server cache size  Thanks for the quick response to session from last week. I have changed the master as requested. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 15:30:03 -0400 To:"},
+      {ID: "0023383", Date: "28/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Auto check me."},
+      {ID: "0023374", Date: "19/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Fwd: Outlook"},
+        {ID: "0019751", Date: "24/12/23", From: "wes@db-engineers.com","To":"Aaron Zapantis <aaron@ici-construction.co" ,"Subject":" Re: Fwd: Change in True Account I was not aware that we had made any changes to web mail. I'll ask Matthew tomorrow. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 10:11:44 -0400 To: Wes Storms"},
+      {ID: "0019752", Date: "26/12/23", From: " caprd@cira.ca","To":"Awes@db-engineers.com" ,"Subject":" Re: 4d server cache size  Thanks for the quick response to session from last week. I have changed the master as requested. ----- Original Message ----- From: Aaron Zapantis <aaron@ici-construction.com> Date: Mon, 25 Oct 2004 15:30:03 -0400 To:"},
+      {ID: "0023383", Date: "28/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Auto check me."},
+      {ID: "0023374", Date: "19/12/23", From: "Matthew Storms <matthewstorms@gmail.com>","To":"matthew@daystar.on.ca" ,"Subject":" Fwd: Outlook"},
+      
+     
+    ],
+    // Column Definitions: Defines the columns to be displayed.
+    columnDefs: [
+      {
+        field: "ID", filter: "true",
+        minWidth:80,
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
+      },
+      { field: "Date",minWidth:60},
+      { field: "From",minWidth:200 },
+      { field: "To",minWidth:150, },
+      { field: "Subject",minWidth:500 },
+      
+    ],
+    defaultColDef: {
+      flex: 1,
+    },
+    suppressRowClickSelection: true,
+    rowSelection: 'multiple',
+    pagination: true,
+    autoHeight: true, // Enable auto height for rows
+    wrapText: true,
+  };
+
+//   function onQuickFilterChanged() {
+//   gridApi.setGridOption(
+//     'quickFilterText',
+//     document.getElementById('quickFilter').value
+//   );
+// }
+
+  // Your Javascript code to create the grid
+  const myGridElement = document.querySelector('#myGrid');
+  agGrid.createGrid(myGridElement, gridOptions);
+  gridOptions.pagination = false;
+  var api = agGrid.GridApi.getGridApi(myGridElement);
+  api.refreshCells({ force: true });
+</script>
+<script type="module" src="./main.js"></script>
+
+</html>

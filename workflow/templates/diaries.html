@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TXP - CRM</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+  <style media="only screen">
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body class="h-svh">
+  <div class="flex flex-col h-full">
+    {% include 'header.html' %}
+    <div
+      class="dark:bg-slate-800 grow relative mx-auto w-full lg:max-w-[93rem] flex flex-col lg:flex-row flex-grow-1 gap-0 lg:gap-4 py-0 lg:py-4 p-4">
+      <!-- ========== MAIN CONTENT ========== -->
+
+      {% load static  %}
+      <!-- Sidebar Toggle -->
+      {% include 'workflowSidebar.html' with workflow=workflow %}
+      <!-- End Sidebar -->
+
+      <!-- Table Section -->
+      {% include 'table.html' with crm="Diaries (Case Notes)" %}
+      <!-- End Table Section -->
+
+    </div>
+    {% include 'footer.html' %}
+  </div>
+  <script src="{% static 'js/preline.js' %}"></script>
+</body>
+<script>
+  // Grid Options: Contains all of the grid configurations
+  const gridOptions = {
+    rowSelection: "multiple",
+    // Row Data: The data to be displayed.
+    rowData: [
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+    
+     
+    ],
+    // Column Definitions: Defines the columns to be displayed.
+    columnDefs: [
+      {
+        field: "ID", filter: "true",
+        minWidth:90,
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
+      },
+      { field: "Case",minWidth:40},
+      { field: "Entered By",minWidth:100 },
+      { field: "Attached To",minWidth:200 },
+      { field: "Diary Type",minWidth:160 },
+      { field: "Entered",minWidth:80 },
+      { field: "Followup",minWidth:80 },
+      { field: "Summary",minWidth:140 },
+      
+    ],
+    defaultColDef: {
+      flex: 1,
+    },
+    suppressRowClickSelection: true,
+    rowSelection: 'multiple',
+    pagination: true,
+    autoHeight: true, // Enable auto height for rows
+    wrapText: true,
+  };
+
+//   function onQuickFilterChanged() {
+//   gridApi.setGridOption(
+//     'quickFilterText',
+//     document.getElementById('quickFilter').value
+//   );
+// }
+
+  // Your Javascript code to create the grid
+  const myGridElement = document.querySelector('#myGrid');
+  agGrid.createGrid(myGridElement, gridOptions);
+  gridOptions.pagination = false;
+  var api = agGrid.GridApi.getGridApi(myGridElement);
+  api.refreshCells({ force: true });
+</script>
+<script type="module" src="./main.js"></script>
+
+</html>

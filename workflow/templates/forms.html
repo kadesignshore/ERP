@@ -1,0 +1,966 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TXP - CRM</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+  <style media="only screen">
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body class="h-svh">
+  <div class="flex flex-col h-full">
+    {% include 'header.html' %}
+    <div
+      class="dark:bg-slate-800 grow relative mx-auto w-full lg:max-w-[93rem] flex flex-col lg:flex-row flex-grow-1 gap-0 lg:gap-4 py-0 lg:py-4 p-4">
+      <!-- ========== MAIN CONTENT ========== -->
+
+      {% load static  %}
+      <!-- Sidebar Toggle -->
+      {% include 'workflowSidebar.html' with workflow=workflow %}
+      <!-- End Sidebar -->
+
+      <div class="md:mx-8">
+        <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-6 lg:flex lg:justify-between">
+          <div class="col-span-4">
+            <div class="mt-4 grid grid-cols-1 md:flex gap-x-6 gap-y-8 lg:grid-cols-6">
+              <div class="col-span-3">
+                <img src="/static/images/perth_logo.jpg" alt="">
+              </div>
+              <div class="col-span-3">
+                <p class="block text-3xl font-medium text-sky-900">Design Shore</p>
+                <p class="block text-md font-medium text-black">Perth Summer League</p>
+                <p class="block text-md font-medium text-black">708 Marshall Rd, Malaga, WA, 6090</p>
+                <p class="block text-2xl font-medium text-sky-900">Youth Registration Form (-18 yrs)</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-2">
+            <img src="/static/images/TXP_Blue_Tag_Login_2022.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    
+    <div class="py-4 border-y-2 md:mx-4 my-4">
+    <p class="mb-3 text-black-500 dark:text-black-400 leading-6 text-justify"><strong class="font-semibold text-gray-900 dark:text-white">ABC Football Club</strong>  collects personal information, including sensitive information about children and parents each year for club purposes to enable us to carry out our 'Duty of Care' and to contact you if required. This on-line form must be submitted to the club before your children can participate in any of ABC sport activities. </p>
+    <p class="mt-4 text-black-500 dark:text-black-400 leading-6 text-justify">The contact information is used to communicate with parents/guardians about program information using media such as emails, phone texting (SMS) and the club website <a class="mb-3 text-gray-500 dark:text-gray-400" href=""></a>abcfootballorg.au.</p>
+    <p class="mt-4 text-black-500 dark:text-black-400 leading-6 text-justify">Health information about children is sensitive information within the terms of the National Privacy Policy under the Privacy Act. The only reason we ask for this is so that we can better care for your child. If we do not obtain this information we may not be able to care for your child correctly in the case of an emergency.</p>
+    <p class="mt-4 text-black-500 dark:text-black-400 leading-6 text-justify">We wil not disclose your personal information to third parties without your consent.</p>
+    <p class="mt-4 text-black-500 dark:text-black-400 leading-6 text-justify">If circumstances change, it is the responsibility of the signatory to advise the club of full details.</p>
+    <p class="mt-4 text-black-500 dark:text-black-400 leading-6 text-justify">We are a club that adheres to the WA Safe Child policy and screen all leaders before they are appointed. Leaders in child-related activitieis have a current WA Working with Children/Card Check.</p>
+    </div>
+    <div class="block mb-4">
+    <fieldset>
+    <div class="lg:flex md:flex flex-row">
+      <label class="block text-xl font-medium text-sky-900 leading-6">Number of parents and guardians covered by this form :</label>
+    
+      <div class="flex">
+        <div class="flex items-center mx-4">
+            <input id="guardians-1" type="radio" name="guardianscovered" value="1" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+            <label for="guardians-1" class="block ms-2  text-xl font-medium text-gray-900 dark:text-gray-300">
+              1
+            </label>
+          </div>
+    
+          <div class="flex items-center mx-4">
+            <input id="guardians-2" type="radio" name="guardianscovered" value="2" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+            <label for="guardians-2" class="block ms-2 text-xl font-medium text-gray-900 dark:text-gray-300">
+              2
+            </label>
+          </div>
+      </div>
+    </div>
+    </fieldset>
+    <div class="border-b-2">
+      <p class="block text-base font-medium text-black-900 py-2">1. Parent / Guardian / Carer Information</p>
+    <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-6">
+      <div class="col-span-2">
+          <label for="prefixP1" class="block text-sm font-medium leading-6 text-gray-900">Prefix</label>
+          <div class="mt-2">
+            <select id="prefixP1" name="prefixP1" autocomplete="prefixP1" class="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <option class="mx-4" value="1" selected=""></option>
+              <option value="0">Mr</option>
+              <option value="1">Mrs</option>
+              <option value="2">Mrss</option>
+              <option value="3">Ms</option>
+              <option value="4">Dr</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="surnameP1" class="block text-sm font-medium leading-6 text-gray-900">Surname :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="text" name="surnameP1" id="surnameP1" autocomplete="surnameP1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="firstnameP1" class="block text-sm font-medium leading-6 text-gray-900">First Name :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="text" name="firstnameP1" id="firstnameP1" autocomplete="firstnameP1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="homeaddressP1" class="block text-sm font-medium leading-6 text-gray-900">Address :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="text" name="homeaddressP1" id="homeaddressP1" autocomplete="homeaddressP1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="suburbP1" class="block text-sm font-medium leading-6 text-gray-900">Suburb :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="text" name="suburbP1" id="suburbP1" autocomplete="suburbP1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="postalP1" class="block text-sm font-medium leading-6 text-gray-900">Postal Code :</label>
+          <div class="mt-2">
+            <input type="number" name="postalP1" id="postalP1" autocomplete="postalP1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="mobileP1" class="block text-sm font-medium leading-6 text-gray-900">Mobile :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="number" name="mobileP1" id="mobileP1" autocomplete="mobileP1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="tel1P1" class="block text-sm font-medium leading-6 text-gray-900">Home Phone :</label>
+          <div class="mt-2">
+            <input type="number" name="tel1P1" id="tel1P1" autocomplete="tel1P1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="tel2P1" class="block text-sm font-medium leading-6 text-gray-900">Work Phone :</label>
+          <div class="mt-2">
+            <input type="number" name="tel2P1" id="tel2P1" autocomplete="tel2P1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="email1P1" class="block text-sm font-medium leading-6 text-gray-900">Email 1 :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="Email" name="email1P1" id="email1P1" autocomplete="email1P1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="email2P1" class="block text-sm font-medium leading-6 text-gray-900">Email 2 :</label>
+          <div class="mt-2">
+            <input type="Email" name="email2P1" id="email2P1" autocomplete="email2P1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2 md:mb-8">
+          <label for="relationP1" class="block text-sm font-medium leading-6 text-gray-900">Relationship to Particpant :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <select id="relationP1" name="relationP1" autocomplete="relationP1" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <option value="1" selected=""></option>
+              <option value="0">Aunt</option>
+              <option value="1">Brother</option>
+              <option value="2">Brother-in-Law</option>
+              <option value="3">Business Partner</option>
+              <option value="4">Child</option>
+              <option value="5">Daughter</option>
+              <option value="6">Daughter-in-Law</option>
+              <option value="7">Emergency Contact</option>
+              <option value="8">Family Friend</option>
+              <option value="9">Father</option>
+              <option value="10">Father-in-Law</option>
+              <option value="11">Foster Father</option>
+              <option value="12">Foster Mother</option>
+              <option value="13">God Father</option>
+              <option value="14">God Mother</option>
+              <option value="15">Granddaughter</option>
+              <option value="16">Grandfather</option>
+              <option value="17">Grandmother</option>
+              <option value="18">Grandson</option>
+              <option value="19">Guardian</option>
+              <option value="20">Husband</option>
+              <option value="21">In-Law</option>
+              <option value="22">Mother</option>
+              <option value="23">Mother-in-Law</option>
+              <option value="24">Nephew</option>
+              <option value="25">Niece</option>
+              <option value="26">Other</option>
+              <option value="27">Relative</option>
+              <option value="28">Sister</option>
+              <option value="29">Sister-in-Law</option>
+              <option value="30">Son</option>
+              <option value="31">Son-in-Law</option>
+              <option value="32">Sport Teammate</option>
+              <option value="33">Sport/Fitness Partner</option>
+              <option value="34">Spouse</option>
+              <option value="35">Step Father</option>
+              <option value="36">Step Mother</option>
+              <option value="37">Uncle</option>
+              <option value="38">Uncle/Aunt</option>
+            </select>
+          </div>
+        </div>
+    </div>
+    </div>
+    <div class="border-b-2">
+      <p class="block text-xl font-medium text-sky-900 mt-4 mb-4">Emergency Contact Details</p>
+      <p class="mt-4 text-black-500 dark:text-black-400 leading-6 text-justify">In the event that parents/guardians cannot be contacted, Design Shore must have the information of someone else outside the family home (if possible) as an Emergency Contact. This section must be completed. I have obtained the following person's permission to be the Emergency Contact for my children.</p>
+      <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-6">
+          <div class="col-span-2">
+              <label for="prefixE1" class="block text-sm font-medium leading-6 text-gray-900">Prefix</label>
+              <div class="mt-2">
+                <select id="prefixE1" name="prefixE1" autocomplete="prefixE1" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  <option value="1" selected=""></option>
+                  <option value="0">Mr</option>
+                  <option value="1">Mrs</option>
+                  <option value="2">Mrss</option>
+                  <option value="3">Ms</option>
+                  <option value="4">Dr</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-span-2">
+              <label for="surnameE1" class="block text-sm font-medium leading-6 text-gray-900">Surname :<span class="text-red-600">*</span></label>
+              <div class="mt-2">
+                <input type="text" name="surnameE1" id="surnameE1" autocomplete="surnameE1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+            <div class="col-span-2">
+              <label for="firstnameE1" class="block text-sm font-medium leading-6 text-gray-900">First Name :<span class="text-red-600">*</span></label>
+              <div class="mt-2">
+                <input type="text" name="firstnameE1" id="firstnameE1" autocomplete="firstnameE1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+            <div class="col-span-2">
+              <label for="homeaddressE1" class="block text-sm font-medium leading-6 text-gray-900">Address :<span class="text-red-600">*</span></label>
+              <div class="mt-2">
+                <input type="text" name="homeaddressE1" id="homeaddressE1" autocomplete="homeaddressE1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+            <div class="col-span-2">
+              <label for="suburbE1" class="block text-sm font-medium leading-6 text-gray-900">Suburb :<span class="text-red-600">*</span></label>
+              <div class="mt-2">
+                <input type="text" name="suburbE1" id="suburbE1" autocomplete="suburbE1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+            <div class="col-span-2">
+              <label for="postalE1" class="block text-sm font-medium leading-6 text-gray-900">Postal Code :</label>
+              <div class="mt-2">
+                <input type="text" name="postalE1" id="postalE1" autocomplete="postalE1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+            <div class="col-span-2">
+              <label for="mobileE1" class="block text-sm font-medium leading-6 text-gray-900">Mobile :<span class="text-red-600">*</span></label>
+              <div class="mt-2">
+                <input type="text" name="mobileE1" id="mobileE1" autocomplete="mobileE1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+            <div class="col-span-2">
+              <label for="emailE1" class="block text-sm font-medium leading-6 text-gray-900">Email :</label>
+              <div class="mt-2">
+                <input type="email" name="emailE1" id="emailE1" autocomplete="emailE1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+            <div class="col-span-2 md:mb-8">
+              <label for="relationE1" class="block text-sm font-medium leading-6 text-gray-900">Relationship to Particpant :<span class="text-red-600">*</span></label>
+              <div class="mt-2">
+                <select id="relationE1" name="relationE1" autocomplete="relationE1" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  <option value="1" selected=""></option>
+                  <option value="0">Aunt</option>
+                  <option value="1">Brother</option>
+                  <option value="2">Brother-in-Law</option>
+                  <option value="3">Business Partner</option>
+                  <option value="4">Child</option>
+                  <option value="5">Daughter</option>
+                  <option value="6">Daughter-in-Law</option>
+                  <option value="7">Emergency Contact</option>
+                  <option value="8">Family Friend</option>
+                  <option value="9">Father</option>
+                  <option value="10">Father-in-Law</option>
+                  <option value="11">Foster Father</option>
+                  <option value="12">Foster Mother</option>
+                  <option value="13">God Father</option>
+                  <option value="14">God Mother</option>
+                  <option value="15">Granddaughter</option>
+                  <option value="16">Grandfather</option>
+                  <option value="17">Grandmother</option>
+                  <option value="18">Grandson</option>
+                  <option value="19">Guardian</option>
+                  <option value="20">Husband</option>
+                  <option value="21">In-Law</option>
+                  <option value="22">Mother</option>
+                  <option value="23">Mother-in-Law</option>
+                  <option value="24">Nephew</option>
+                  <option value="25">Niece</option>
+                  <option value="26">Other</option>
+                  <option value="27">Relative</option>
+                  <option value="28">Sister</option>
+                  <option value="29">Sister-in-Law</option>
+                  <option value="30">Son</option>
+                  <option value="31">Son-in-Law</option>
+                  <option value="32">Sport Teammate</option>
+                  <option value="33">Sport/Fitness Partner</option>
+                  <option value="34">Spouse</option>
+                  <option value="35">Step Father</option>
+                  <option value="36">Step Mother</option>
+                  <option value="37">Uncle</option>
+                  <option value="38">Uncle/Aunt</option>
+                </select>
+              </div>
+            </div>
+      </div>
+    </div>
+    <div class="my-8">
+    <div class="lg:flex md:flex flex-row">
+      <label class="block text-xl font-medium text-sky-900 leading-6">Number of parents and guardians covered by this form :</label>
+    
+      <div class="lg:flex lg:flex-row md:flex md:flex-row flex justify-center">
+        <div class="flex items-center mx-4">
+            <input id="guardians-1" type="radio" name="guardians covered" value="1" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+            <label for="guardians-1" class="block ms-2  text-xl font-medium text-gray-900 dark:text-gray-300">
+              1
+            </label>
+          </div>
+    
+          <div class="flex items-center mx-4">
+            <input id="guardians-2" type="radio" name="guardians covered" value="2" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+            <label for="guardians-2" class="block ms-2 text-xl font-medium text-gray-900 dark:text-gray-300">
+              2
+            </label>
+          </div>
+          <div class="flex items-center mx-4">
+              <input id="guardians-3" type="radio" name="guardians covered" value="1" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+              <label for="guardians-2" class="block ms-2  text-xl font-medium text-gray-900 dark:text-gray-300">
+                3
+              </label>
+            </div>
+      
+            <div class="flex items-center mx-4">
+              <input id="guardians-2" type="radio" name="guardians covered" value="2" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+              <label for="guardians-2" class="block ms-2 text-xl font-medium text-gray-900 dark:text-gray-300">
+                4
+              </label>
+            </div>
+            <div class="flex items-center mx-4">
+              <input id="guardians-2" type="radio" name="guardians covered" value="2" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+              <label for="guardians-2" class="block ms-2 text-xl font-medium text-gray-900 dark:text-gray-300">
+                5
+              </label>
+            </div>
+          
+      </div>
+    </div>
+    <p class="block text-sm font-medium text-red-500 py-2">Please complete the below information for each participant as required.</p>
+    <p class="block text-base font-medium text-black-900 py-2">1. Particpant Information</p>
+    <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-6">
+      <div class="col-span-2">
+          <label for="surnameC1" class="block text-sm font-medium leading-6 text-gray-900">Surname :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="text" name="surnameC1" id="surnameC1" autocomplete="surnameC1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="firstnameC1" class="block text-sm font-medium leading-6 text-gray-900">First Name :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="text" name="firstnameC1" id="firstnameC1" autocomplete="firstnameC1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="akaC1" class="block text-sm font-medium leading-6 text-gray-900">Preferred Name :</label>
+          <div class="mt-2">
+            <input type="text" name="akaC1" id="akaC1" autocomplete="PreferredNameParticpant" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="dobC1" class="block text-sm font-medium leading-6 text-gray-900">Date of Birth :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="Date" name="dobC1" id="dobC1" autocomplete="DateofBirth" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="genderC1" class="block text-sm font-medium leading-6 text-gray-900">Gender :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <select id="genderC1" name="genderC1" autocomplete="genderC1" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <option value="1" selected=""></option>
+              <option value="0">Male</option>
+              <option value="1">Female</option>
+              <option value="2">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="Ethnic_Group_C1" class="block text-sm font-medium leading-6 text-gray-900">Ethnic Group :</label>
+          <div class="mt-2">
+            <select id="Ethnic_Group_C1" name="Ethnic_Group_C1" autocomplete="Ethnic_Group_C1" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <option value="0" selected=""></option>
+              <option value="1">Australian</option>
+              <option value="2">Brazilian</option>
+              <option value="3">Canadian</option>
+              <option value="4">Chinese</option>
+              <option value="5">English</option>
+              <option value="6">French</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="homeaddressC1" class="block text-sm font-medium leading-6 text-gray-900">Street Address<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="text" name="homeaddressC1" id="homeaddressC1" autocomplete="homeaddressC1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="suburbC1" class="block text-sm font-medium leading-6 text-gray-900">Suburb<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="text" name="suburbC1" id="suburbC1" autocomplete="suburbC1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="postalcodeC1" class="block text-sm font-medium leading-6 text-gray-900">Postal Code :</label>
+          <div class="mt-2">
+            <input type="text" name="postalcodeC1" id="postalcodeC1" autocomplete="postalcodeC1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="telC1" class="block text-sm font-medium leading-6 text-gray-900">Home Phone :</label>
+          <div class="mt-2">
+            <input type="text" name="telC1" id="telC1" autocomplete="telC1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="mobileC1" class="block text-sm font-medium leading-6 text-gray-900">Mobile :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="text" name="mobileC1" id="mobileC1" autocomplete="mobileC1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="email1C1" class="block text-sm font-medium leading-6 text-gray-900">Participant Email :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <input type="text" name="email1C1" id="email1C1" autocomplete="email1C1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="email2C1" class="block text-sm font-medium leading-6 text-gray-900">Alternative Email :</label>
+          <div class="mt-2">
+            <input type="text" name="email2C1" id="email2C1" autocomplete="email2C1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="SchoolYrC1" class="block text-sm font-medium leading-6 text-gray-900">School Year :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <select id="SchoolYrC1" name="SchoolYrC1" autocomplete="SchoolYrC1" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <option value="0" selected=""></option>
+              <option value="1">Creche</option>
+              <option value="2">Pre-Kindy</option>
+              <option value="3">Kindy</option>
+              <option value="4">Pre-Primary</option>
+              <option value="5">Year 1</option>
+              <option value="6">Year 2</option>
+              <option value="6">Year 3</option>
+              <option value="6">Year 4</option>
+              <option value="6">Year 5</option>
+              <option value="6">Year 6</option>
+              <option value="6">Year 7</option>
+              <option value="6">Year 8</option>
+              <option value="6">Year 9</option>
+              <option value="6">Year 10</option>
+              <option value="6">Year 11</option>
+              <option value="6">Year 12</option>
+              <option value="6">NA</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="schoolC1" class="block text-sm font-medium leading-6 text-gray-900">School Attending :</label>
+          <div class="mt-2">
+            <input type="text" name="schoolC1" id="schoolC1" autocomplete="schoolC1" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="liveswithC1" class="block text-sm font-medium leading-6 text-gray-900">Lives With :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <select id="liveswithC1" name="liveswithC1" autocomplete="liveswithC1" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <option value="0" selected=""></option>
+              <option value="1">Both Parents</option>
+              <option value="2">Mother</option>
+              <option value="3">Kindy</option>
+              <option value="4">Father</option>
+              <option value="5">Grandparents</option>
+              <option value="6">Neither Parent</option>
+              <option value="7">Not Given</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="Group_ID_C1" class="block text-sm font-medium leading-6 text-gray-900">Preferred Group :</label>
+          <div class="mt-2">
+            <select id="Group_ID_C1" name="Group_ID_C1" autocomplete="Group_ID_C1" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <option value="0" selected="">Select Group</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <label for="Location_C1" class="block text-sm font-medium leading-6 text-gray-900">Location :<span class="text-red-600">*</span></label>
+          <div class="mt-2">
+            <select id="Location_C1" name="Location_C1" autocomplete="Location_C1" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <option value="0" selected="">Select Location</option>
+            </select>
+          </div>
+        </div>
+    </div>
+    </div>
+    <div class="border-y-2">
+    <p class="block text-base font-medium text-black-900 py-2">Medical Information, Disabilities, Allergies and Dietary Requirements</p>
+    <p class="block text-sm font-medium text-black-500 text-justify">If your child suffers from a condition, disability, or allergy that may need special attention while in Design Shore's care please provide information and care instructions.</p>
+    <p class="block text-sm font-medium text-black-500 text-justify">If medication is to be administered then it must be supplied by the parents/guardians/carers with clear instructions.</p>
+    <p class="block text-sm font-medium text-red-500 text-justify">Please note, enrolment registration will not proceed if all required information is not attached.</p>
+    <div class="mt-4">
+      <div class="grid grid-cols-1 lg:grid-cols-6">
+          <div class="col-span-3 md:col-span-3 lg:col-span-3 block text-sm font-medium leading-6 text-gray-900">
+              <fieldset>
+                <label for="MedicationYesC1" class="block text-sm font-medium text-gray-900 leading-6 py-4">• Requires Medication at Activity ? <span class="text-red-600">*</span></label>
+          
+               <div class="flex">
+                  <div class="flex items-center mb-4">
+                      <input id="MedicationYesC1" type="radio" name="MedicationYesC1" value="Letter" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+                      <label for="MedicationYesC1" class="block ms-2  text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Yes
+                      </label>
+                    </div>
+          
+                    <div class="flex items-center mb-4 mx-2">
+                      <input id="MedicationYesC1" type="radio" name="MedicationYesC1" value="A4" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="MedicationYesC1" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        No
+                      </label>
+                    </div>
+               </div>
+              </fieldset>
+            </div>
+            <div class="col-span-3">
+              <form>
+                  <p class="block text-sm font-medium text-gray-900 leading-6 py-4">If Yes, please attach supporting documentation.</p>
+                  <label for="small-file-input" class="sr-only">Choose file</label>
+                  <input type="file" name="small-file-input" id="small-file-input" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-4 dark:file:bg-gray-700 dark:file:text-gray-400" onchange="document.getElementById('Large_Logo').src = window.URL.createObjectURL(this.files[0])">
+                </form>
+            </div>
+      </div>
+      <p class="mt-4 block text-sm font-medium text-black-500 text-justify">If you're unable to upload supporting documentation at this time, please indicate Yes or No in the following box including any comments that we need to know in case of an emergency.</p>
+      <textarea id="textarea-label-with-helper-text" class="py-3 px-4 mt-2 block w-full h-16 border-gray-600 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" rows="3" placeholder="" aria-describedby="hs-textarea-helper-text"></textarea>
+    </div>
+    <div class="mt-4">
+      <div class="grid grid-cols-1 lg:grid-cols-6">
+          <div class="col-span-3 md:col-span-3 lg:col-span-3 block text-sm font-medium leading-6 text-gray-900">
+              <fieldset>
+                <label for="InhalerYesC1" class="block text-sm font-medium text-gray-900 leading-6 py-4">• Asthma ? (Inhaler/Puffer) <span class="text-red-600">*</span></label>
+          
+               <div class="flex">
+                  <div class="flex items-center mb-4">
+                      <input id="InhalerYesC1" type="radio" name="InhalerYesC1" value="Letter" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+                      <label for="InhalerYesC1" class="block ms-2  text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Yes
+                      </label>
+                    </div>
+          
+                    <div class="flex items-center mb-4 mx-2">
+                      <input id="InhalerYesC1" type="radio" name="InhalerYesC1" value="A4" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="InhalerYesC1" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        No
+                      </label>
+                    </div>
+               </div>
+              </fieldset>
+            </div>
+            <div class="col-span-3">
+              <form>
+                  <p class="block text-sm font-medium text-gray-900 leading-6 py-4">If Yes, please attach supporting documentation.</p>
+                  <label for="small-file-input" class="sr-only">Choose file</label>
+                  <input type="file" name="small-file-input" id="small-file-input" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-4 dark:file:bg-gray-700 dark:file:text-gray-400" onchange="document.getElementById('Large_Logo').src = window.URL.createObjectURL(this.files[0])">
+                </form>
+            </div>
+      </div>
+      <p class="mt-4 block text-sm font-medium text-black-500 text-justify">If you're unable to upload supporting documentation at this time, please indicate Yes or No in the following box including any comments that we need to know in case of an emergency.</p>
+      <textarea id="textarea-label-with-helper-text" class="py-3 px-4 mt-2 block w-full h-16 border-gray-600 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" rows="3" placeholder="" aria-describedby="hs-textarea-helper-text"></textarea>
+    </div>
+    <div class="mt-4">
+      <div class="grid grid-cols-1 lg:grid-cols-6">
+          <div class="col-span-3 md:col-span-3 lg:col-span-3 block text-sm font-medium leading-6 text-gray-900">
+              <fieldset>
+                <label for="EpiPenYesC1" class="block text-sm font-medium text-gray-900 leading-6 py-4">• Anaphylaxis ? (EpiPen/Auto-Injector) <span class="text-red-600">*</span></label>
+          
+               <div class="flex">
+                  <div class="flex items-center mb-4">
+                      <input id="EpiPenYesC1" type="radio" name="EpiPenYesC1" value="Letter" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+                      <label for="EpiPenYesC1" class="block ms-2  text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Yes
+                      </label>
+                    </div>
+          
+                    <div class="flex items-center mb-4 mx-2">
+                      <input id="EpiPenYesC1" type="radio" name="EpiPenYesC1" value="A4" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="EpiPenYesC1" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        No
+                      </label>
+                    </div>
+               </div>
+              </fieldset>
+            </div>
+            <div class="col-span-3">
+              <form>
+                  <p class="block text-sm font-medium text-gray-900 leading-6 py-4">If Yes, please attach supporting documentation.</p>
+                  <label for="PartFileC1_4" class="sr-only">Choose file</label>
+                  <input type="file" name="PartFileC1_4" id="PartFileC1_4" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-4 dark:file:bg-gray-700 dark:file:text-gray-400" onchange="document.getElementById('Large_Logo').src = window.URL.createObjectURL(this.files[0])">
+                </form>
+            </div>
+      </div>
+      <p class="mt-4 block text-sm font-medium text-black-500 text-justify">If you're unable to upload supporting documentation at this time, please indicate Yes or No in the following box including any comments that we need to know in case of an emergency.</p>
+      <textarea id="textarea-label-with-helper-text" class="py-3 px-4 mt-2 block w-full h-16 border-gray-600 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" rows="3" placeholder="" aria-describedby="hs-textarea-helper-text"></textarea>
+    </div>
+    <div class="mt-4">
+      <div class="grid grid-cols-1 lg:grid-cols-6">
+          <div class="col-span-3 md:col-span-3 lg:col-span-3 block text-sm font-medium leading-6 text-gray-900">
+              <fieldset>
+                <p class="block text-sm font-medium text-gray-900 leading-6 py-4">• Epilepsy ? (Seizure Plan) <span class="text-red-600">*</span></p>
+          
+               <div class="flex">
+                  <div class="flex items-center mb-4">
+                      <input id="option-5" type="radio" name="RequiresMedicationatActivity" value="Letter" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+                      <label for="option-5" class="block ms-2  text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Yes
+                      </label>
+                    </div>
+          
+                    <div class="flex items-center mb-4 mx-2">
+                      <input id="option-6" type="radio" name="RequiresMedicationatActivity" value="A4" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="option-6" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        No
+                      </label>
+                    </div>
+               </div>
+              </fieldset>
+            </div>
+            <div class="col-span-3">
+              <form>
+                  <p class="block text-sm font-medium text-gray-900 leading-6 py-4">If Yes, please attach supporting documentation.</p>
+                  <label for="small-file-input" class="sr-only">Choose file</label>
+                  <input type="file" name="small-file-input" id="small-file-input" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-4 dark:file:bg-gray-700 dark:file:text-gray-400" onchange="document.getElementById('Large_Logo').src = window.URL.createObjectURL(this.files[0])">
+                </form>
+            </div>
+      </div>
+      <p class="mt-4 block text-sm font-medium text-black-500 text-justify">If you're unable to upload supporting documentation at this time, please indicate Yes or No in the following box including any comments that we need to know in case of an emergency.</p>
+      <textarea id="textarea-label-with-helper-text" class="py-3 px-4 mt-2 block w-full h-16 border-gray-600 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" rows="3" placeholder="" aria-describedby="hs-textarea-helper-text"></textarea>
+    </div>
+    <div class="mt-4">
+      <div class="grid grid-cols-1 lg:grid-cols-6">
+          <div class="col-span-3 md:col-span-3 lg:col-span-3 block text-sm font-medium leading-6 text-gray-900">
+              <fieldset>
+                <p class="block text-sm font-medium text-gray-900 leading-6 py-4">• Behavioural Management Plan ? <span class="text-red-600">*</span></p>
+          
+               <div class="flex">
+                  <div class="flex items-center mb-4">
+                      <input id="option-5" type="radio" name="RequiresMedicationatActivity" value="Letter" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+                      <label for="option-5" class="block ms-2  text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Yes
+                      </label>
+                    </div>
+          
+                    <div class="flex items-center mb-4 mx-2">
+                      <input id="option-6" type="radio" name="RequiresMedicationatActivity" value="A4" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="option-6" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        No
+                      </label>
+                    </div>
+               </div>
+              </fieldset>
+            </div>
+            <div class="col-span-3">
+              <form>
+                  <p class="block text-sm font-medium text-gray-900 leading-6 py-4">If Yes, please attach supporting documentation.</p>
+                  <label for="small-file-input" class="sr-only">Choose file</label>
+                  <input type="file" name="small-file-input" id="small-file-input" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-4 dark:file:bg-gray-700 dark:file:text-gray-400" onchange="document.getElementById('Large_Logo').src = window.URL.createObjectURL(this.files[0])">
+                </form>
+            </div>
+      </div>
+      <p class="mt-4 block text-sm font-medium text-black-500 text-justify">If you're unable to upload supporting documentation at this time, please indicate Yes or No in the following box including any comments that we need to know in case of an emergency.</p>
+      <textarea id="textarea-label-with-helper-text" class="py-3 px-4 mt-2 block w-full h-16 border-gray-600 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" rows="3" placeholder="" aria-describedby="hs-textarea-helper-text"></textarea>
+    </div>
+    <div class="mt-4">
+      <div class="grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-6">
+          <div class="col-span-3 md:col-span-3 lg:col-span-3 block text-sm font-medium leading-6 text-gray-900">
+              <fieldset>
+                <p class="block text-sm font-medium text-gray-900 leading-6 py-4">• Special Requirements ? <span class="text-red-600">*</span></p>
+          
+               <div class="flex">
+                  <div class="flex items-center mb-4">
+                      <input id="option-5" type="radio" name="RequiresMedicationatActivity" value="Letter" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+                      <label for="option-5" class="block ms-2  text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Yes
+                      </label>
+                    </div>
+          
+                    <div class="flex items-center mb-4 mx-2">
+                      <input id="option-6" type="radio" name="RequiresMedicationatActivity" value="A4" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="option-6" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        No
+                      </label>
+                    </div>
+               </div>
+              </fieldset>
+            </div>
+            <div class="col-span-3">
+              <form>
+                  <p class="block text-sm font-medium text-gray-900 leading-6 py-4">If Yes, please attach supporting documentation.</p>
+                  <label for="small-file-input" class="sr-only">Choose file</label>
+                  <input type="file" name="small-file-input" id="small-file-input" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-4 dark:file:bg-gray-700 dark:file:text-gray-400" onchange="document.getElementById('Large_Logo').src = window.URL.createObjectURL(this.files[0])">
+                </form>
+            </div>
+      </div>
+      <p class="mt-4 block text-sm font-medium text-black-500 text-justify">If you're unable to upload supporting documentation at this time, please indicate Yes or No in the following box including any comments that we need to know in case of an emergency.</p>
+      <textarea id="textarea-label-with-helper-text" class="py-3 px-4 mt-2 block w-full h-16 border-gray-600 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" rows="3" placeholder="" aria-describedby="hs-textarea-helper-text"></textarea>
+    </div>
+    <div class="mt-4">
+      <p class="mt-4 block text-sm font-medium text-black-500">Please outline any additional medical information, as well as dietry requirements in the below text box:</p>
+      <textarea id="textarea-label-with-helper-text" class="py-3 px-4 mt-2 block w-full h-16 border-gray-600 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" rows="3" placeholder="" aria-describedby="hs-textarea-helper-text"></textarea>
+    </div>
+    <div class="mt-4 mb-4">
+      <p class="mt-4 block text-sm font-medium text-black-500">Is there any additional information we should know? <span class=" text-sm font-medium text-sky-500">(e.g. Access or Guardian issues)</span></p>
+      <textarea id="textarea-label-with-helper-text" class="py-3 px-4 mt-2 block w-full h-16 border-gray-600 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" rows="3" placeholder="" aria-describedby="hs-textarea-helper-text"></textarea>
+    </div>
+    </div>
+    <div class="border-y-2">
+    <p class="block text-base font-medium text-black-900 py-2">Media Permissions</p>
+    <p class="block text-sm font-medium text-grey-500 text-justify">Do you give permission for Design Shore to produce, promote and use media (i.e. photos) of the participant (which may identify them) for :</p>
+    <div class="grid grid-cols-1 md:gap-x-6 md:gap-y-8 lg:grid-cols-6">
+      <div class="col-span-3 md:col-span-3 lg:col-span-3 block text-sm font-medium leading-6 text-gray-900">
+          <fieldset>
+            <p class="block text-sm font-medium text-gray-900 leading-6 py-4">• Internal publicity within Design Shore ? <span class="text-red-600">*</span></p>
+      
+           <div class="flex">
+              <div class="flex items-center mb-4">
+                  <input id="option-5" type="radio" name="RequiresMedicationatActivity" value="Letter" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+                  <label for="option-5" class="block ms-2  text-sm font-medium text-gray-900 dark:text-gray-300">
+                    Yes
+                  </label>
+                </div>
+      
+                <div class="flex items-center mb-4 mx-2">
+                  <input id="option-6" type="radio" name="RequiresMedicationatActivity" value="A4" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="option-6" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    No
+                  </label>
+                </div>
+           </div>
+          </fieldset>
+        </div>
+        <div class="col-span-3 md:col-span-3 lg:col-span-3 block text-sm font-medium leading-6 text-gray-900">
+          <fieldset>
+            <p class="block text-sm font-medium text-gray-900 leading-6 py-4">• External publicity for marketing outside of Design Shore ? <span class="text-red-600">*</span></p>
+      
+           <div class="flex">
+              <div class="flex items-center mb-4">
+                  <input id="option-5" type="radio" name="RequiresMedicationatActivity" value="Letter" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked="">
+                  <label for="option-5" class="block ms-2  text-sm font-medium text-gray-900 dark:text-gray-300">
+                    Yes
+                  </label>
+                </div>
+      
+                <div class="flex items-center mb-4 mx-2">
+                  <input id="option-6" type="radio" name="RequiresMedicationatActivity" value="A4" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="option-6" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    No
+                  </label>
+                </div>
+           </div>
+          </fieldset>
+        </div>
+    </div>
+    </div>
+    <div class="border-y-2">
+    <p class="block text-base font-medium text-black-900 py-2">Funding Information :<span class="text-base font-medium text-grey-200 py-2">(If Applicable)</span></p>
+    <div class="col-span-2 flex">
+      <label for="Funding_Type_C1" class="block text-sm font-medium leading-6 text-gray-900">Funding Type :</label>
+      <div class="mx-2">
+        <select id="Funding_Type_C1" name="Funding_Type_C1" autocomplete="Funding_Type_C1" class="block w-auto rounded-md border-0 px-1 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          <option value="0" selected=""></option>
+          <option value="1">Commonwealth Respite</option>
+          <option value="2">Department of Communities</option>
+          <option value="3">NDIS</option>
+          <option value="4">Other</option>
+          <option value="5">Self-Funding</option>
+          <option value="6">Not Applicable</option>
+        </select>
+      </div>
+    </div>
+    <div class="mt-4 mb-4">
+      <p class="mt-4 block text-sm font-medium text-black-500">Please enter what would you like to achieve from our social groups in the text box below.<span class=" text-sm font-medium text-sky-500"> (If you're on an NDIS plan, include NDIS Goals.)</span></p>
+      <textarea id="textarea-label-with-helper-text" class="py-3 px-4 mt-2 block w-full h-16 border-gray-600 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" rows="3" placeholder="" aria-describedby="hs-textarea-helper-text"></textarea>
+    </div>
+    </div>
+    <div class="border-y-2">
+      <div class="mt-4 mb-4">
+          <p class="block text-xl font-medium text-sky-900 leading-6 mb-4">Attachments (Supporting Documentation)</p>
+          <input type="file" name="small-file-input" id="small-file-input" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-4 dark:file:bg-gray-700 dark:file:text-gray-400" onchange="document.getElementById('Large_Logo').src = window.URL.createObjectURL(this.files[0])">
+      </div>
+    </div>
+    <div class="border-b-2 mt-4 pb-6">
+      <p class="block text-xl font-medium text-sky-900 leading-6">Consent</p>
+      <div class="col-span-2 flex">
+          <label for="formYear" class="block text-sm font-medium leading-6 text-gray-900">Year covered by this form : <span class="text-red-600">*</span></label>
+          <div class="mx-2">
+            <select id="formYear" name="formYear" autocomplete="formYear" class="block w-auto rounded-md border-0 pl-2 pr-8 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <option value="0" selected=""></option>
+              <option value="1">2018</option>
+              <option value="2">2019</option>
+              <option value="3">2020</option>
+              <option value="4">2021</option>
+              <option value="5">2022</option>
+              <option value="6">2023</option>
+            </select>
+          </div>
+        </div>
+        <p class="mt-2 text-black-500 dark:text-black-400 leading-6">I,  give full permission for   to participate in all activities at Design Shore.</p>
+        <p class="mt-2 text-black-500 dark:text-black-400 leading-6 text-justify">• I consent to my child/children being taken out on excursions with ABC Football Club as arranged from time to time, using both public and private transport.</p>
+        <p class="mt-2 text-black-500 dark:text-black-400 leading-6">• I have supplied full health and dietary information and provided details of emergency contacts.</p>
+        <p class="mt-2 text-black-500 dark:text-black-400 leading-6 text-justify">• I understand that in the event of an emergency, it is the club's intention to make every effort to contact me or the people listed as the emergency contacts. However, if contact cannot be made, I give permission to my child/children receiving ambulance, medical, surgical or anaesthetic care as required for them, and I accept full responsibility for all expenses incurred.</p>
+        <div class="relative flex mt-4">
+          <div class="flex h-6 items-center">
+            <input id="conditionsoutlined" name="conditionsoutlined" type="checkbox" class="h-4 w-4 rounded border-gray-900 text-indigo-600 focus:ring-indigo-600">
+          </div>
+          <div class="text-sm leading-6 px-2">
+            <label for="conditionsoutlined" class="block text-sm font-medium leading-6 text-gray-900"> I have read, understood and agree with all the conditions outlined in this form. <span class="text-red-600">*</span></label>
+          </div>
+        </div>
+        <div class="mt-4">
+          <div class="mt-4 grid grid-cols-1 lg:grid-cols-6">
+              <div class="col-span-2">
+                  <p class="lg:text-center"><strong>Signed :</strong></p>
+              </div>
+              <div class="col-span-2">
+                  <p class="lg:text-center"><strong>Date :</strong>14/03/24</p>
+                  
+              </div>
+              <div class="col-span-2">
+                  <p class="lg:text-center"><strong>Relationship to Child/Children :</strong></p>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-6">
+          <div class="col-span-2 block m-auto w-fit">
+              <p class="sm:text-center">Thank you so much for completing this form.</p>
+              <p class="sm:text-center">Please click the ’Save and Submit Form’ button to complete your enrolment.</p>
+          </div>
+          <div class="col-span-2 md:m-auto md:w-fit md:flex flex flex-row">
+              <button type="button" class="py-2 px-8 inline-flex items-center  text-sm font-semibold rounded-lg border border-transparent bg-green-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-green-800">Save and Submit Form</button>
+              <button type="button" class="md:ml-[5%] ml-[5%] rounded-md bg-red-600 px-8 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Cancel</button>
+              
+    
+          </div>
+          <div class="col-span-2 block m-auto w-fit">
+              <img src="/static/images/childsafe.jpg" alt="">
+          </div>
+      </div>
+    </div>
+    </div>
+
+    </div>
+    {% include 'footer.html' %}
+  </div>
+  <script src="{% static 'js/preline.js' %}"></script>
+</body>
+<script>
+  // Grid Options: Contains all of the grid configurations
+  const gridOptions = {
+    rowSelection: "multiple",
+    // Row Data: The data to be displayed.
+    rowData: [
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+      {ID: "03051", Case: "", "Entered By":"Summer","Attached To":"LYN STORMS (Client)","Diary Type":"Sales Cal","Entered":"15/02/24","Followup":"15/02/24","Summary":"Test"},
+      {ID: "00123", Case: "", "Entered By":"MDS","Attached To":"David Adams (Contact)","Diary Type":"Fax","Entered":"10/02/24","Followup":"17/02/24","Summary":"MDS"},
+      {ID: "00244", Case: "", "Entered By":"Summer","Attached To":"WILLIAM SHORT (Contact)","Diary Type":" Accounting","Entered":"05/02/24","Followup":"08/02/24","Summary":"TEST"},
+      {ID: "00102", Case: "0038", "Entered By":"WStorms","Attached To":"Wes Storms (Staff)","Diary Type":" Correspondence","Entered":"15/01/24","Followup":"22/01/24","Summary":"Fusce at turpis"},
+    
+     
+    ],
+    // Column Definitions: Defines the columns to be displayed.
+    columnDefs: [
+      {
+        field: "ID", filter: "true",
+        minWidth:90,
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      checkboxSelection: true,
+      },
+      { field: "Case",minWidth:40},
+      { field: "Entered By",minWidth:100 },
+      { field: "Attached To",minWidth:200 },
+      { field: "Diary Type",minWidth:160 },
+      { field: "Entered",minWidth:80 },
+      { field: "Followup",minWidth:80 },
+      { field: "Summary",minWidth:140 },
+      
+    ],
+    defaultColDef: {
+      flex: 1,
+    },
+    suppressRowClickSelection: true,
+    rowSelection: 'multiple',
+    pagination: true,
+    autoHeight: true, // Enable auto height for rows
+    wrapText: true,
+  };
+
+//   function onQuickFilterChanged() {
+//   gridApi.setGridOption(
+//     'quickFilterText',
+//     document.getElementById('quickFilter').value
+//   );
+// }
+
+  // Your Javascript code to create the grid
+  const myGridElement = document.querySelector('#myGrid');
+  agGrid.createGrid(myGridElement, gridOptions);
+  gridOptions.pagination = false;
+  var api = agGrid.GridApi.getGridApi(myGridElement);
+  api.refreshCells({ force: true });
+</script>
+<script type="module" src="./main.js"></script>
+
+</html>
