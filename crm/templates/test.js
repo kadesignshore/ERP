@@ -1,0 +1,1 @@
+console.log(['apple','banana','cherry'].filter(word => word.length > 5))
