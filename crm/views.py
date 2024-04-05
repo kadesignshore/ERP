@@ -31,7 +31,7 @@ def crmSuppliers(request):
     return render(request, "crm.html",{"crm":'Suppliers'})
 
 def contactProfile(request):
-    return render(request, "contactProfile.html",{"crm":'Client'})
+    return render(request, "contactProfile.html")
 
 def showForms(request):
     form = CustomerForm()
